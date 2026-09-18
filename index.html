@@ -573,6 +573,121 @@
     .autora-card { flex-direction: column; align-items: center; text-align: center; padding: 24px; }
     .autora-info { text-align: left; }
   }
+
+  /* ===== CHAT DE PERGUNTAS PRONTAS ===== */
+  .chat-bubble {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    width: 58px;
+    height: 58px;
+    background: var(--archive-green-dark);
+    border-radius: 50%;
+    border: 2px solid var(--stamp-red);
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(15, 61, 51, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    z-index: 999;
+    transition: transform 0.15s ease;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .chat-bubble img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .chat-bubble:hover {
+    transform: scale(1.06);
+  }
+
+  .chat-panel {
+    position: fixed;
+    bottom: 92px;
+    right: 22px;
+    width: 320px;
+    max-width: calc(100vw - 44px);
+    max-height: 70vh;
+    overflow-y: auto;
+    background: var(--paper);
+    border: 1px solid var(--kraft);
+    border-radius: 6px;
+    box-shadow: 0 8px 28px rgba(15, 61, 51, 0.25);
+    display: none;
+    z-index: 999;
+  }
+
+  .chat-panel.open {
+    display: block;
+  }
+
+  .chat-panel-header {
+    background: var(--navy);
+    color: var(--paper);
+    padding: 14px 16px;
+    font-family: 'Special Elite', monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .chat-panel-body {
+    padding: 16px;
+  }
+
+  .chat-question-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: var(--paper-shadow);
+    border: 1px solid var(--kraft);
+    border-radius: 4px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 12.5px;
+    color: var(--archive-green-dark);
+    cursor: pointer;
+  }
+
+  .chat-question-btn:hover {
+    background: var(--kraft);
+  }
+
+  .chat-answer {
+    display: none;
+    background: var(--paper);
+    border-left: 3px solid var(--stamp-red);
+    padding: 10px 12px;
+    margin: -4px 0 10px;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 12.5px;
+    color: var(--archive-green-dark);
+    line-height: 1.55;
+  }
+
+  .chat-answer.open {
+    display: block;
+  }
+
+  .chat-whatsapp {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--archive-green-dark);
+    color: var(--paper);
+    border-radius: 4px;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 500;
+    font-size: 12.5px;
+    text-decoration: none;
+  }
 </style>
 </head>
 <body>
@@ -936,6 +1051,57 @@
         </div>
       </div>
     </section>
+  </div>
+  <button class="chat-bubble" onclick="document.getElementById('chat-panel').classList.toggle('open')" aria-label="Tirar dúvidas">
+    <img src="https://res.cloudinary.com/deyg6jktu/image/upload/e_sharpen:60,q_auto:best,f_auto,w_120,h_120,c_fill,g_face/v1789657393/WhatsApp_Image_2026-09-15_at_16.59.23_axr5i8.jpg" alt="Sara">
+  </button>
+
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-panel-header">DÚVIDAS FREQUENTES</div>
+    <div class="chat-panel-body">
+
+      <button class="chat-question-btn" onclick="
+        var a = document.getElementById('resp-1');
+        a.classList.toggle('open');
+      ">Como recebo o material depois de comprar?</button>
+      <div class="chat-answer" id="resp-1">
+        O material é enviado automaticamente para o seu e-mail assim que o pagamento é confirmado — não precisa esperar ninguém te mandar manualmente.
+      </div>
+
+      <button class="chat-question-btn" onclick="
+        var a = document.getElementById('resp-2');
+        a.classList.toggle('open');
+      ">Funciona no celular?</button>
+      <div class="chat-answer" id="resp-2">
+        Sim! O material é um PDF, que abre em qualquer celular, tablet ou computador, sem precisar instalar nada.
+      </div>
+
+      <button class="chat-question-btn" onclick="
+        var a = document.getElementById('resp-3');
+        a.classList.toggle('open');
+      ">Preciso pagar as ferramentas de IA mencionadas?</button>
+      <div class="chat-answer" id="resp-3">
+        A maioria das ferramentas indicadas tem versão gratuita suficiente para começar. Algumas têm planos pagos opcionais, mas você não precisa deles para aproveitar o material.
+      </div>
+
+      <button class="chat-question-btn" onclick="
+        var a = document.getElementById('resp-4');
+        a.classList.toggle('open');
+      ">Preciso entender de tecnologia pra usar?</button>
+      <div class="chat-answer" id="resp-4">
+        Não! O material foi feito justamente para quem está começando — cada ferramenta vem com passo a passo simples, direto ao ponto.
+      </div>
+
+      <button class="chat-question-btn" onclick="
+        var a = document.getElementById('resp-5');
+        a.classList.toggle('open');
+      ">Por quanto tempo tenho acesso?</button>
+      <div class="chat-answer" id="resp-5">
+        O acesso ao PDF é definitivo — depois que ele chega no seu e-mail, é seu para sempre, sem prazo de expiração.
+      </div>
+
+      <a href="https://wa.me/5547999193829?text=Oi%20Sara!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Plano%20de%20Estudo%20de%20IAs" target="_blank" class="chat-whatsapp">📱 Falar direto com a Sara no WhatsApp</a>
+    </div>
   </div>
 
 </body>
