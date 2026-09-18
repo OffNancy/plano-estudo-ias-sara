@@ -743,7 +743,7 @@
           Área: Educação e Tecnologias · 6 módulos
         </div>
         <div class="hero-actions">
-          <a href="#" class="hero-cta">Comprar agora</a>
+          <a href="#" class="hero-cta" id="btn-comprar" onclick="iniciarCompra(event)">Comprar agora</a>
           <a href="#semana-1" class="hero-cta secondary">Ver módulos</a>
         </div>
 
@@ -1148,6 +1148,38 @@
   <footer class="site-footer">
     Desenvolvido por <a href="https://instagram.com/nancysantana.dev" target="_blank" rel="noopener">@nancysantana.dev</a>
   </footer>
+
+  <script>
+    async function iniciarCompra(event) {
+      event.preventDefault();
+      var btn = event.currentTarget;
+      var textoOriginal = btn.textContent;
+      btn.textContent = 'Aguarde...';
+      btn.style.pointerEvents = 'none';
+
+      try {
+        var resposta = await fetch('/.netlify/functions/create-preference', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({})
+        });
+        var dados = await resposta.json();
+
+        if (dados.init_point) {
+          window.location.href = dados.init_point;
+        } else {
+          alert('Não foi possível iniciar o pagamento. Tente novamente em alguns instantes.');
+          btn.textContent = textoOriginal;
+          btn.style.pointerEvents = 'auto';
+        }
+      } catch (erro) {
+        console.error(erro);
+        alert('Não foi possível iniciar o pagamento. Tente novamente em alguns instantes.');
+        btn.textContent = textoOriginal;
+        btn.style.pointerEvents = 'auto';
+      }
+    }
+  </script>
 
 </body>
 </html>

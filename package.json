@@ -1,0 +1,9 @@
+{
+  "name": "plano-ias-sara-functions",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "mercadopago": "^2.0.15",
+    "resend": "^3.5.0"
+  }
+}
