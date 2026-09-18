@@ -131,9 +131,15 @@
     font-weight: 500;
   }
 
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 32px;
+  }
+
   .hero-cta {
     display: inline-block;
-    margin-top: 32px;
     background: var(--archive-green-dark);
     color: var(--paper);
     font-family: 'Public Sans', sans-serif;
@@ -141,10 +147,22 @@
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    padding: 16px 32px;
+    padding: 16px 28px;
     text-decoration: none;
-    border: none;
+    border: 1px solid var(--archive-green-dark);
     cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .hero-cta:hover {
+    transform: translateY(-1px);
+    opacity: 0.96;
+  }
+
+  .hero-cta.secondary {
+    background: transparent;
+    color: var(--archive-green-dark);
+    border-color: var(--kraft);
   }
 
   /* ===== GAVETA DE FICHÁRIO (ilustração do hero) ===== */
@@ -704,7 +722,10 @@
           SARA REINHARDT · <span class="credencial-confirmada">Doutora em Educação e Novas Tecnologias (UNINTER, 2025)</span><br>
           Área: Educação e Tecnologias · 6 módulos
         </div>
-        <a href="#" class="hero-cta">Quero o plano completo</a>
+        <div class="hero-actions">
+          <a href="#" class="hero-cta">Comprar agora</a>
+          <a href="#semana-1" class="hero-cta secondary">Ver módulos</a>
+        </div>
 
         <div class="hero-drawer-mobile">
           <a href="#semana-1" class="drawer-tab active">01</a>
