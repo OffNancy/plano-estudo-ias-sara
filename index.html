@@ -286,13 +286,8 @@
     padding: 32px;
     max-width: 560px;
     position: relative;
-    transform: rotate(-0.6deg);
     box-shadow: 3px 4px 0 rgba(44, 59, 46, 0.06);
     margin-bottom: 40px;
-  }
-
-  .ficha:nth-child(even) {
-    transform: rotate(0.5deg);
   }
 
   .ficha-top {
@@ -317,7 +312,6 @@
     border: 1.5px solid var(--stamp-red);
     padding: 3px 10px;
     letter-spacing: 0.05em;
-    transform: rotate(2deg);
     border-radius: 2px;
   }
 
@@ -344,6 +338,41 @@
     margin-bottom: 18px;
   }
 
+  .ficha-tools-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .ficha-tool-chip {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 12px 6px 8px;
+    background: var(--paper-shadow);
+    border: 1px solid var(--kraft);
+    border-radius: 20px;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 500;
+    font-size: 12.5px;
+    color: var(--navy);
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .ficha-tool-chip:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  }
+
+  .ficha-tool-chip img {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
   .ficha-body {
     font-family: 'Public Sans', sans-serif;
     font-size: 14.5px;
@@ -355,7 +384,6 @@
     background: var(--paper-shadow);
     border-left: 3px solid var(--stamp-red);
     padding: 16px 18px;
-    transform: rotate(0.4deg);
   }
 
   .ficha-desafio-label {
@@ -739,7 +767,7 @@
         <h1 class="hero-title">Um plano de estudo de 6 semanas para aplicar IA na sua prática pedagógica</h1>
         <p class="hero-subtitle">Um guia progressivo, organizado por módulo, para levar ferramentas de inteligência artificial da teoria para a sala de aula.</p>
         <div class="hero-citation">
-          SARA REINHARDT · <span class="credencial-confirmada">Doutora em Educação e Novas Tecnologias (UNINTER, 2025)</span><br>
+          SARA REINHARDT · <span class="credencial-confirmada">Doutora em Educação e Novas Tecnologias (2025)</span><br>
           Área: Educação e Tecnologias · 6 módulos
         </div>
         <div class="hero-actions">
@@ -783,7 +811,11 @@
         </div>
         <hr class="ficha-divider">
         <h2 class="ficha-title">Planejar aula com IA</h2>
-        <div class="ficha-tools">Eduaide.Ai · Magic School · Teachy</div>
+        <div class="ficha-tools-icons">
+          <a href="https://www.eduaide.ai" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=eduaide.ai&sz=64" alt="">Eduaide.Ai</a>
+          <a href="https://www.magicschool.ai" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=magicschool.ai&sz=64" alt="">Magic School</a>
+          <a href="https://teachy.com.br" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=teachy.com.br&sz=64" alt="">Teachy</a>
+        </div>
         <p class="ficha-body">
           Ferramentas que geram planos de aula, exercícios e avaliações completas em minutos,
           adaptadas ao seu conteúdo e à sua turma — sem substituir seu olhar pedagógico, só
@@ -824,7 +856,9 @@
         </div>
         <hr class="ficha-divider">
         <h2 class="ficha-title">Criar avaliações e questões</h2>
-        <div class="ficha-tools">Question Well</div>
+        <div class="ficha-tools-icons">
+          <a href="https://www.questionwell.org" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=questionwell.org&sz=64" alt="">Question Well</a>
+        </div>
         <p class="ficha-body">
           Transforme qualquer texto ou conteúdo de aula em questões de múltipla escolha,
           abertas ou rubricas de avaliação — com exportação direta para Google Forms,
@@ -865,7 +899,11 @@
         </div>
         <hr class="ficha-divider">
         <h2 class="ficha-title">Criar conteúdo visual e interativo</h2>
-        <div class="ficha-tools">Canva · Gamma · Curipod</div>
+        <div class="ficha-tools-icons">
+          <a href="https://www.canva.com" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=canva.com&sz=64" alt="">Canva</a>
+          <a href="https://gamma.app" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=gamma.app&sz=64" alt="">Gamma</a>
+          <a href="https://curipod.com" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=curipod.com&sz=64" alt="">Curipod</a>
+        </div>
         <p class="ficha-body">
           Gere slides, infográficos e materiais visuais ricos a partir de uma ideia solta —
           o Magic Write do Canva escreve o texto, o Gamma monta a apresentação, e o Curipod
@@ -905,7 +943,11 @@
         </div>
         <hr class="ficha-divider">
         <h2 class="ficha-title">Tornar a aula interativa</h2>
-        <div class="ficha-tools">Nearpod · Lessol Lab · Wordwall</div>
+        <div class="ficha-tools-icons">
+          <a href="https://nearpod.com" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=nearpod.com&sz=64" alt="">Nearpod</a>
+          <span class="ficha-tool-chip" style="cursor:default;">Lessol Lab</span>
+          <a href="https://wordwall.net" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=wordwall.net&sz=64" alt="">Wordwall</a>
+        </div>
         <p class="ficha-body">
           Transforme uma apresentação comum em uma experiência interativa: enquetes,
           desenhos, visitas virtuais e quizzes direto nos slides, além de atividades
@@ -947,7 +989,13 @@
         </div>
         <hr class="ficha-divider">
         <h2 class="ficha-title">Pesquisa e apoio geral</h2>
-        <div class="ficha-tools">Perplexity · ChatGPT · Gemini · Microsoft Copilot · NotebookLM</div>
+        <div class="ficha-tools-icons">
+          <a href="https://www.perplexity.ai" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=64" alt="">Perplexity</a>
+          <a href="https://chatgpt.com" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=64" alt="">ChatGPT</a>
+          <a href="https://gemini.google.com" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=64" alt="">Gemini</a>
+          <a href="https://copilot.microsoft.com" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=copilot.microsoft.com&sz=64" alt="">Microsoft Copilot</a>
+          <a href="https://notebooklm.google.com" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=notebooklm.google.com&sz=64" alt="">NotebookLM</a>
+        </div>
         <p class="ficha-body">
           Assistentes gerais de IA que ajudam a resumir pesquisas com citações, funcionar
           como tutor interativo com perguntas socráticas, e planejar aulas e quizzes
@@ -994,7 +1042,9 @@
         </div>
         <hr class="ficha-divider">
         <h2 class="ficha-title">Plataforma completa (bônus)</h2>
-        <div class="ficha-tools">IAula</div>
+        <div class="ficha-tools-icons">
+          <a href="https://iaula.ai" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=iaula.ai&sz=64" alt="">IAula</a>
+        </div>
         <p class="ficha-body">
           Plataforma brasileira alinhada à BNCC: crie planos de aula, corrija redações
           com feedback automático e organize relatórios de alunos em um só lugar. Diferente
