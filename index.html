@@ -338,41 +338,6 @@
     margin-bottom: 18px;
   }
 
-  .ficha-tools-icons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 18px;
-  }
-
-  .ficha-tool-chip {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 6px 12px 6px 8px;
-    background: var(--paper-shadow);
-    border: 1px solid var(--kraft);
-    border-radius: 20px;
-    font-family: 'Public Sans', sans-serif;
-    font-weight: 500;
-    font-size: 12.5px;
-    color: var(--navy);
-    text-decoration: none;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-
-  .ficha-tool-chip:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-  }
-
-  .ficha-tool-chip img {
-    width: 18px;
-    height: 18px;
-    border-radius: 4px;
-    flex-shrink: 0;
-  }
-
   .ficha-body {
     font-family: 'Public Sans', sans-serif;
     font-size: 14.5px;
@@ -754,6 +719,102 @@
   .site-footer a:hover {
     opacity: 0.85;
   }
+
+  /* ===== COMO FUNCIONA (5 etapas) ===== */
+  .como-funciona {
+    padding: 8px 0 48px;
+  }
+
+  .cf-intro {
+    font-size: 14.5px;
+    margin-bottom: 28px;
+    max-width: 560px;
+  }
+
+  .cf-intro strong { color: var(--navy); }
+
+  .cf-etapas {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .cf-etapa {
+    background: var(--paper);
+    border: 1px solid var(--kraft);
+    padding: 14px 10px;
+    text-align: center;
+  }
+
+  .cf-numero {
+    font-family: 'Special Elite', monospace;
+    font-size: 11px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .cf-titulo {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--archive-green-dark);
+  }
+
+  .cf-frase {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--navy);
+    border-left: 3px solid var(--stamp-red);
+    padding-left: 14px;
+    margin-bottom: 8px;
+  }
+
+  .teaser-compra {
+    background: var(--paper-shadow);
+    border-left: 3px solid var(--stamp-red);
+    padding: 16px 18px;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .cf-etapas { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ===== IDENTIFICAÇÃO ANÔNIMA DAS FERRAMENTAS (antes da compra) ===== */
+  .identificacoes { margin-bottom: 18px; }
+
+  .identificacao-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--kraft);
+  }
+
+  .identificacao-item:last-child { border-bottom: none; }
+
+  .identificacao-icone { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
+
+  .identificacao-texto { font-size: 13.5px; }
+
+  .identificacao-texto strong { color: var(--archive-green-dark); }
+
+  .ficha-bloqueado {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--paper-shadow);
+    border-left: 3px solid var(--navy);
+    padding: 12px 16px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--navy);
+    font-weight: 500;
+  }
 </style>
 </head>
 <body>
@@ -801,6 +862,31 @@
       </div>
     </section>
 
+    <section class="como-funciona">
+      <div class="section-intro">COMO FUNCIONA</div>
+      <p class="cf-intro">
+        Este plano foi organizado para que você não apenas conheça ferramentas de Inteligência
+        Artificial, mas compreenda <strong>como, quando e por que utilizá-las em sua prática
+        pedagógica</strong>. Em cada bloco, você seguirá cinco etapas:
+      </p>
+      <div class="cf-etapas">
+        <div class="cf-etapa"><div class="cf-numero">01</div><div class="cf-titulo">CONHECER</div></div>
+        <div class="cf-etapa"><div class="cf-numero">02</div><div class="cf-titulo">EXPLORAR</div></div>
+        <div class="cf-etapa"><div class="cf-numero">03</div><div class="cf-titulo">EXPERIMENTAR</div></div>
+        <div class="cf-etapa"><div class="cf-numero">04</div><div class="cf-titulo">REFLETIR</div></div>
+        <div class="cf-etapa"><div class="cf-numero">05</div><div class="cf-titulo">PRATICAR</div></div>
+      </div>
+      <p class="cf-frase">"A tecnologia pode apoiar o processo. A intencionalidade pedagógica continua sendo do professor."</p>
+      <p class="cf-frase" style="margin-bottom:0;">"A IA não substitui o professor. Ela amplia possibilidades."</p>
+
+      <div class="teaser-compra">
+        <strong>Na compra, você terá acesso a:</strong> 6 blocos de estudo e prática, com ferramentas
+        que apoiam diferentes momentos da prática pedagógica — planejar, avaliar, criar, interagir,
+        pesquisar e ampliar sua formação. Cada bloco chega com o nome da ferramenta, o link direto
+        pra usar e o passo a passo de como aplicar.
+      </div>
+    </section>
+
     <section class="fichas-section">
       <div class="section-intro">CATÁLOGO — MÓDULOS 01 A 06</div>
 
@@ -811,42 +897,25 @@
         </div>
         <hr class="ficha-divider">
         <h2 class="ficha-title">Planejar aula com IA</h2>
-        <div class="ficha-tools-icons">
-          <a href="https://www.eduaide.ai" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=eduaide.ai&sz=64" alt="">Eduaide.Ai</a>
-          <a href="https://www.magicschool.ai" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=magicschool.ai&sz=64" alt="">Magic School</a>
-          <a href="https://teachy.com.br" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=teachy.com.br&sz=64" alt="">Teachy</a>
+        <div class="ficha-body" style="margin-bottom:16px;">
+          Utilizar a Inteligência Artificial como apoio ao planejamento de aulas, atividades e
+          estratégias pedagógicas.
         </div>
-        <p class="ficha-body">
-          Ferramentas que geram planos de aula, exercícios e avaliações completas em minutos,
-          adaptadas ao seu conteúdo e à sua turma — sem substituir seu olhar pedagógico, só
-          economizando seu tempo de preparação.
-        </p>
-        <div class="ficha-como-usar">
-          <div class="ficha-como-usar-label">Como usar — Teachy</div>
-          <ol class="ficha-passos">
-            <li>Acesse teachy.com.br e crie sua conta gratuita (ou entre com Google).</li>
-            <li>No menu, clique em "Ferramentas de IA" → "Gerador de plano de aula".</li>
-            <li>Preencha o assunto, o ano de escolaridade e a metodologia (expositiva, invertida, prática).</li>
-            <li>No campo "Contexto", descreva sua turma e alguma particularidade dela.</li>
-            <li>Clique em "Gerar" — o plano completo aparece com objetivos, introdução, desenvolvimento e conclusão.</li>
-            <li>Use o chat com a "Lara" no fim do documento para pedir ajustes específicos.</li>
-          </ol>
-          <div class="ficha-prompt">
-            <div class="ficha-prompt-label">💬 Prompt de exemplo (Eduaide.Ai ou Magic School)</div>
-            <div class="ficha-prompt-text">
-              "Crie um plano de aula de 50 minutos sobre [tema], para alunos do [ano/série],
-              incluindo introdução, atividade prática em grupo e uma forma simples de
-              avaliação ao final."
-            </div>
+        <div class="identificacoes">
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🧠</span>
+            <span class="identificacao-texto"><strong>Planejamento de aulas com IA</strong> — cria planos de aula, atividades, objetivos e recursos pedagógicos.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🧠</span>
+            <span class="identificacao-texto"><strong>Assistente pedagógico com IA</strong> — auxilia no planejamento, criação de atividades, avaliações e adaptação de conteúdos.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🧠</span>
+            <span class="identificacao-texto"><strong>Planejamento e criação de atividades</strong> — gera planos de aula, exercícios, avaliações e outros materiais pedagógicos.</span>
           </div>
         </div>
-        <div class="ficha-desafio">
-          <div class="ficha-desafio-label">🎯 Desafio da semana</div>
-          <div class="ficha-desafio-text">
-            Escolha uma aula que você vai dar essa semana e use uma dessas ferramentas para
-            gerar o plano completo em menos de 10 minutos.
-          </div>
-        </div>
+        <div class="ficha-bloqueado">🔒 Nome da ferramenta, link direto e passo a passo liberados após a compra.</div>
       </div>
 
       <div class="ficha" id="semana-2">
@@ -856,40 +925,17 @@
         </div>
         <hr class="ficha-divider">
         <h2 class="ficha-title">Criar avaliações e questões</h2>
-        <div class="ficha-tools-icons">
-          <a href="https://www.questionwell.org" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=questionwell.org&sz=64" alt="">Question Well</a>
+        <div class="ficha-body" style="margin-bottom:16px;">
+          Utilizar a Inteligência Artificial como apoio à elaboração de questões e instrumentos
+          avaliativos.
         </div>
-        <p class="ficha-body">
-          Transforme qualquer texto ou conteúdo de aula em questões de múltipla escolha,
-          abertas ou rubricas de avaliação — com exportação direta para Google Forms,
-          Kahoot ou Quizizz, prontas para aplicar com a turma.
-        </p>
-        <div class="ficha-como-usar">
-          <div class="ficha-como-usar-label">Como usar — Question Well</div>
-          <ol class="ficha-passos">
-            <li>Acesse questionwell.org e crie uma conta gratuita.</li>
-            <li>Cole ou importe o texto/conteúdo da aula que quer transformar em questões.</li>
-            <li>Defina o objetivo de aprendizagem (o que o aluno precisa demonstrar que sabe).</li>
-            <li>Clique em gerar — a ferramenta cria cerca de 20 questões de múltipla escolha no plano gratuito.</li>
-            <li>Clique em "Verificar com o Google" se quiser confirmar a resposta correta em uma fonte externa.</li>
-            <li>Exporte direto para Google Forms, Kahoot ou Quizizz.</li>
-          </ol>
-          <div class="ficha-prompt">
-            <div class="ficha-prompt-label">💡 Dica de uso</div>
-            <div class="ficha-prompt-text">
-              Para uma avaliação de saída rápida (no fim da aula), use só 4 a 5 questões —
-              é o suficiente para ter uma visão geral do entendimento da turma sem tomar
-              tempo demais.
-            </div>
+        <div class="identificacoes">
+          <div class="identificacao-item">
+            <span class="identificacao-icone">📝</span>
+            <span class="identificacao-texto"><strong>Criação de questões com IA</strong> — transforma textos e conteúdos em questões, quizzes e avaliações.</span>
           </div>
         </div>
-        <div class="ficha-desafio">
-          <div class="ficha-desafio-label">🎯 Desafio da semana</div>
-          <div class="ficha-desafio-text">
-            Pegue um texto que você já usa em sala e transforme em 5 perguntas de múltipla
-            escolha com o Question Well.
-          </div>
-        </div>
+        <div class="ficha-bloqueado">🔒 Nome da ferramenta, link direto e passo a passo liberados após a compra.</div>
       </div>
 
       <div class="ficha" id="semana-3">
@@ -899,41 +945,25 @@
         </div>
         <hr class="ficha-divider">
         <h2 class="ficha-title">Criar conteúdo visual e interativo</h2>
-        <div class="ficha-tools-icons">
-          <a href="https://www.canva.com" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=canva.com&sz=64" alt="">Canva</a>
-          <a href="https://gamma.app" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=gamma.app&sz=64" alt="">Gamma</a>
-          <a href="https://curipod.com" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=curipod.com&sz=64" alt="">Curipod</a>
+        <div class="ficha-body" style="margin-bottom:16px;">
+          Transformar conteúdos pedagógicos em materiais visuais, apresentações e experiências de
+          aprendizagem.
         </div>
-        <p class="ficha-body">
-          Gere slides, infográficos e materiais visuais ricos a partir de uma ideia solta —
-          o Magic Write do Canva escreve o texto, o Gamma monta a apresentação, e o Curipod
-          transforma tudo em slides com enquetes e quizzes interativos.
-        </p>
-        <div class="ficha-como-usar">
-          <div class="ficha-como-usar-label">Como usar — Canva (Magic Write)</div>
-          <ol class="ficha-passos">
-            <li>Abra o Canva e crie um novo design (apresentação, infográfico ou documento).</li>
-            <li>Procure o app "Magic Write" no painel de apps à esquerda.</li>
-            <li>Descreva o que você precisa (ex: um resumo em tópicos sobre um tema da aula).</li>
-            <li>Escolha entre as opções geradas e cole no seu design.</li>
-            <li>Use o "Design Mágico" para transformar esse texto em um layout visual automático.</li>
-            <li>Ajuste cores e fontes conforme a identidade da sua aula, e baixe ou apresente direto do Canva.</li>
-          </ol>
-          <div class="ficha-prompt">
-            <div class="ficha-prompt-label">💬 Prompt de exemplo (Magic Write)</div>
-            <div class="ficha-prompt-text">
-              "Crie um roteiro de slide, em tópicos curtos, explicando [tema] para alunos
-              do [ano/série], com linguagem simples e um exemplo do dia a dia em cada tópico."
-            </div>
+        <div class="identificacoes">
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🎨</span>
+            <span class="identificacao-texto"><strong>Criação de materiais visuais</strong> — produz apresentações, infográficos, atividades e outros recursos educacionais com apoio de IA.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">📊</span>
+            <span class="identificacao-texto"><strong>Criação de apresentações com IA</strong> — transforma ideias e textos em apresentações estruturadas e visuais.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🖥️</span>
+            <span class="identificacao-texto"><strong>Criação de aulas interativas</strong> — combina apresentações, perguntas, atividades e participação dos alunos.</span>
           </div>
         </div>
-        <div class="ficha-desafio">
-          <div class="ficha-desafio-label">🎯 Desafio da semana</div>
-          <div class="ficha-desafio-text">
-            Crie 1 slide ou infográfico sobre um tema da sua disciplina usando o Magic
-            Write do Canva.
-          </div>
-        </div>
+        <div class="ficha-bloqueado">🔒 Nome da ferramenta, link direto e passo a passo liberados após a compra.</div>
       </div>
 
       <div class="ficha" id="semana-4">
@@ -943,43 +973,24 @@
         </div>
         <hr class="ficha-divider">
         <h2 class="ficha-title">Tornar a aula interativa</h2>
-        <div class="ficha-tools-icons">
-          <a href="https://nearpod.com" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=nearpod.com&sz=64" alt="">Nearpod</a>
-          <span class="ficha-tool-chip" style="cursor:default;">Lessol Lab</span>
-          <a href="https://wordwall.net" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=wordwall.net&sz=64" alt="">Wordwall</a>
+        <div class="ficha-body" style="margin-bottom:16px;">
+          Ampliar a participação dos estudantes por meio de atividades e recursos interativos.
         </div>
-        <p class="ficha-body">
-          Transforme uma apresentação comum em uma experiência interativa: enquetes,
-          desenhos, visitas virtuais e quizzes direto nos slides, além de atividades
-          geradas especificamente para o contexto educacional. O Wordwall complementa
-          criando jogos rápidos de revisão — roleta, caça-palavras, quiz — prontos em
-          minutos.
-        </p>
-        <div class="ficha-como-usar">
-          <div class="ficha-como-usar-label">Como usar — Nearpod</div>
-          <ol class="ficha-passos">
-            <li>Crie uma conta gratuita em nearpod.com.</li>
-            <li>Clique em "Create" e comece do zero ou importe um PowerPoint/Google Slides já pronto.</li>
-            <li>Em cada slide, use "Add Activity" para inserir enquete, pergunta aberta, quadro de desenho ou vídeo interativo.</li>
-            <li>Salve e escolha "Live Participation" (aula em tempo real) ou "Student-Paced" (aluno faz no próprio ritmo).</li>
-            <li>Compartilhe o código gerado — a turma entra em nearpod.com/join.</li>
-          </ol>
-          <div class="ficha-prompt">
-            <div class="ficha-prompt-label">🎲 Bônus rápido — Wordwall</div>
-            <div class="ficha-prompt-text">
-              Crie uma conta em wordwall.net, escolha um modelo (Roleta, Quiz,
-              Caça-palavras), digite as perguntas e respostas e clique em "Concluído" —
-              o jogo fica pronto com link de compartilhamento em segundos.
-            </div>
+        <div class="identificacoes">
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🎯</span>
+            <span class="identificacao-texto"><strong>Aulas e apresentações interativas</strong> — permite inserir perguntas, enquetes, atividades e vídeos interativos.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🧩</span>
+            <span class="identificacao-texto"><strong>Criação e organização de atividades pedagógicas</strong> — auxilia o professor na elaboração de experiências e recursos para a aprendizagem.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🎮</span>
+            <span class="identificacao-texto"><strong>Jogos educativos e atividades interativas</strong> — cria quizzes, roletas, caça-palavras, associações e outros jogos para revisão.</span>
           </div>
         </div>
-        <div class="ficha-desafio">
-          <div class="ficha-desafio-label">🎯 Desafio da semana</div>
-          <div class="ficha-desafio-text">
-            Transforme uma apresentação que você já tem em uma versão interativa com
-            enquete no Nearpod.
-          </div>
-        </div>
+        <div class="ficha-bloqueado">🔒 Nome da ferramenta, link direto e passo a passo liberados após a compra.</div>
       </div>
 
       <div class="ficha" id="semana-5">
@@ -988,93 +999,53 @@
           <span class="ficha-selo">ATIVO</span>
         </div>
         <hr class="ficha-divider">
-        <h2 class="ficha-title">Pesquisa e apoio geral</h2>
-        <div class="ficha-tools-icons">
-          <a href="https://www.perplexity.ai" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=64" alt="">Perplexity</a>
-          <a href="https://chatgpt.com" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=64" alt="">ChatGPT</a>
-          <a href="https://gemini.google.com" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=64" alt="">Gemini</a>
-          <a href="https://copilot.microsoft.com" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=copilot.microsoft.com&sz=64" alt="">Microsoft Copilot</a>
-          <a href="https://notebooklm.google.com" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=notebooklm.google.com&sz=64" alt="">NotebookLM</a>
+        <h2 class="ficha-title">Pesquisar, Criar e Apoiar</h2>
+        <div class="ficha-body" style="margin-bottom:16px;">
+          Conhecer diferentes assistentes de Inteligência Artificial e compreender que cada
+          ferramenta pode atender a necessidades diferentes.
         </div>
-        <p class="ficha-body">
-          Assistentes gerais de IA que ajudam a resumir pesquisas com citações, funcionar
-          como tutor interativo com perguntas socráticas, e planejar aulas e quizzes
-          integrados ao Google Workspace. Para quem está em mestrado ou doutorado, o
-          NotebookLM organiza fontes e artigos e gera resumos direto a partir do seu
-          próprio material de pesquisa.
-        </p>
-        <div class="ficha-como-usar">
-          <div class="ficha-como-usar-label">Como usar — ChatGPT como tutor socrático</div>
-          <ol class="ficha-passos">
-            <li>Acesse chatgpt.com e crie uma conta (o plano gratuito já é suficiente).</li>
-            <li>Descreva o conteúdo que você vai ensinar.</li>
-            <li>Peça perguntas socráticas — que guiam o aluno a pensar, sem dar a resposta pronta.</li>
-            <li>Use essas perguntas para abrir a aula ou para um momento de debate em grupo.</li>
-          </ol>
-          <div class="ficha-prompt">
-            <div class="ficha-prompt-label">💬 Prompt de exemplo</div>
-            <div class="ficha-prompt-text">
-              "Aja como um tutor socrático. Me dê 5 perguntas que ajudem meus alunos do
-              [ano/série] a chegar sozinhos à conclusão sobre [tema], sem que eu dê a
-              resposta direto."
-            </div>
+        <div class="identificacoes">
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🔎</span>
+            <span class="identificacao-texto"><strong>Pesquisa com IA e fontes</strong> — auxilia na pesquisa de informações e apresenta referências para consulta.</span>
           </div>
-          <div class="ficha-como-usar-label" style="margin-top:16px;">Como usar — NotebookLM (para pesquisadores)</div>
-          <ol class="ficha-passos">
-            <li>Acesse notebooklm.google.com e crie um "notebook" novo.</li>
-            <li>Faça upload dos seus artigos, PDFs ou textos de pesquisa (as fontes).</li>
-            <li>Peça um resumo, uma linha do tempo, ou pergunte algo específico — a IA responde só com base nos documentos que você subiu, citando de qual fonte veio cada trecho.</li>
-          </ol>
-        </div>
-        <div class="ficha-desafio">
-          <div class="ficha-desafio-label">🎯 Desafio da semana</div>
-          <div class="ficha-desafio-text">
-            Peça pro ChatGPT te dar 3 perguntas socráticas sobre o próximo conteúdo que
-            você vai ensinar.
+          <div class="identificacao-item">
+            <span class="identificacao-icone">💬</span>
+            <span class="identificacao-texto"><strong>Assistente pedagógico com IA</strong> — apoia planejamento, criação de atividades, explicações, ideias, textos e tutoria.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">✨</span>
+            <span class="identificacao-texto"><strong>Assistente de IA do Google</strong> — auxilia na criação de conteúdos, pesquisa, organização de ideias e atividades pedagógicas.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">💻</span>
+            <span class="identificacao-texto"><strong>Assistente de IA da Microsoft</strong> — apoia produção de textos, ideias, pesquisas e tarefas integradas ao ecossistema Microsoft.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">📚</span>
+            <span class="identificacao-texto"><strong>Estudo e pesquisa com fontes próprias</strong> — permite trabalhar com PDFs, artigos e documentos, fazendo perguntas e gerando sínteses a partir dos materiais fornecidos.</span>
           </div>
         </div>
+        <div class="ficha-bloqueado">🔒 Nome da ferramenta, link direto e passo a passo liberados após a compra.</div>
       </div>
 
       <div class="ficha" id="semana-6">
         <div class="ficha-top">
           <span class="ficha-numero">Nº 06</span>
-          <span class="ficha-selo">ATIVO</span>
+          <span class="ficha-selo">BÔNUS</span>
         </div>
         <hr class="ficha-divider">
-        <h2 class="ficha-title">Plataforma completa (bônus)</h2>
-        <div class="ficha-tools-icons">
-          <a href="https://iaula.ai" target="_blank" rel="noopener" class="ficha-tool-chip"><img src="https://www.google.com/s2/favicons?domain=iaula.ai&sz=64" alt="">IAula</a>
+        <h2 class="ficha-title">Inteligência Artificial na Educação</h2>
+        <div style="font-size:13px; color:var(--navy); font-weight:500; margin-bottom:14px;">Formação oficial do MEC — Bloco Temático 3</div>
+        <div class="ficha-body" style="margin-bottom:16px;">
+          Nesta etapa, o professor amplia sua compreensão sobre Inteligência Artificial na
+          Educação, com uma referência institucional do Ministério da Educação — dentro do
+          programa Escolas Conectadas.
         </div>
-        <p class="ficha-body">
-          Plataforma brasileira alinhada à BNCC: crie planos de aula, corrija redações
-          com feedback automático e organize relatórios de alunos em um só lugar. Diferente
-          das outras ferramentas desta lista, o IAula é implementado direto pela escola ou
-          rede de ensino, não por cadastro individual.
-        </p>
-        <div class="ficha-como-usar">
-          <div class="ficha-como-usar-label">Como acessar — IAula</div>
-          <ol class="ficha-passos">
-            <li>Apresente a ferramenta pra coordenação pedagógica ou direção da sua escola.</li>
-            <li>Solicite um contato com a equipe do IAula pelo site iaula.ai.</li>
-            <li>A implementação é feita de forma orientada, junto com a equipe da plataforma.</li>
-          </ol>
-          <div class="ficha-prompt">
-            <div class="ficha-prompt-label">💡 Dica de uso</div>
-            <div class="ficha-prompt-text">
-              Se você atua também como coordenadora ou supervisora, esse pode ser um bom
-              gancho para levar a conversa sobre IA para o nível institucional da sua escola.
-            </div>
-          </div>
-        </div>
-        <div class="ficha-desafio">
-          <div class="ficha-desafio-label">🎯 Desafio da semana</div>
-          <div class="ficha-desafio-text">
-            Visite iaula.ai, conheça os recursos, e pense se vale apresentar a ferramenta
-            para a coordenação ou direção da sua escola.
-          </div>
-        </div>
+        <div class="ficha-bloqueado">🔒 Link oficial de acesso liberado após a compra.</div>
       </div>
     </section>
+
 
     <section class="autora-section">
       <div class="section-intro">FICHA DE REGISTRO — AUTORIA</div>
