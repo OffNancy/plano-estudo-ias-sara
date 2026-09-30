@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seu acesso completo — Plano de Estudo de IAs</title>
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Public+Sans:wght@400;500&family=Special+Elite&display=swap" rel="stylesheet">
+
+<!-- Firebase (somente leitura pública do token, ver firestore.rules) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  // ATENÇÃO NANCY: preencher com a config do projeto Firebase usado neste site
+  // (Project settings > Configurações gerais > "Seus apps" > SDK setup and configuration).
+  const firebaseConfig = {
+    apiKey: "SUA_API_KEY",
+    authDomain: "SEU_PROJETO.firebaseapp.com",
+    projectId: "SEU_PROJETO",
+    storageBucket: "SEU_PROJETO.appspot.com",
+    messagingSenderId: "SEU_SENDER_ID",
+    appId: "SEU_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  async function validarAcesso() {
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('token');
+
+    const telaCarregando = document.getElementById('tela-carregando');
+    const telaErro = document.getElementById('tela-erro');
+    const telaConteudo = document.getElementById('tela-conteudo');
+
+    if (!token) {
+      telaCarregando.style.display = 'none';
+      telaErro.style.display = 'block';
+      return;
+    }
+
+    // MODO DEMONSTRAÇÃO — apenas para você (Nancy) conferir visualmente o
+    // conteúdo liberado antes de configurar Firebase/Mercado Pago de verdade.
+    // Acesse: acesso.html?token=demo
+    // IMPORTANTE: remover este bloco (ou trocar "demo" por algo secreto)
+    // antes de publicar o site pra Sara de vez, senão qualquer pessoa
+    // consegue ver o conteúdo completo sem pagar, só usando ?token=demo.
+    if (token === 'demo') {
+      telaCarregando.style.display = 'none';
+      telaConteudo.style.display = 'block';
+      return;
+    }
+
+    try {
+      const ref = doc(db, 'acessos', token);
+      const snap = await getDoc(ref);
+
+      if (snap.exists() && snap.data().status === 'pago') {
+        telaCarregando.style.display = 'none';
+        telaConteudo.style.display = 'block';
+      } else {
+        telaCarregando.style.display = 'none';
+        telaErro.style.display = 'block';
+      }
+    } catch (erro) {
+      console.error('Erro ao validar acesso:', erro);
+      telaCarregando.style.display = 'none';
+      telaErro.style.display = 'block';
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', validarAcesso);
+</script>
+
+<style>
+  :root {
+    --paper: #F8F9FA;
+    --paper-shadow: #E8DCC6;
+    --archive-green: #0F3D33;
+    --archive-green-dark: #0F3D33;
+    --stamp-red: #D4AF37;
+    --kraft: #E8DCC6;
+    --navy: #0D2B4A;
+    --sage: #A7B7A4;
+  }
+
+  html { scroll-behavior: smooth; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--archive-green-dark);
+    font-family: 'Public Sans', sans-serif;
+    line-height: 1.6;
+  }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== TELAS DE CARREGANDO / ERRO ===== */
+  .tela-estado {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+  }
+
+  .tela-estado h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 24px;
+    color: var(--archive-green-dark);
+    margin-bottom: 12px;
+  }
+
+  .tela-estado p { max-width: 440px; margin-bottom: 20px; }
+
+  .tela-estado a.whatsapp {
+    display: inline-block;
+    padding: 12px 22px;
+    background: var(--archive-green-dark);
+    color: var(--paper);
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  /* ===== CABEÇALHO DO CONTEÚDO LIBERADO ===== */
+  .top-bar {
+    background: var(--navy);
+    color: var(--paper);
+    text-align: center;
+    padding: 10px 24px;
+    font-family: 'Special Elite', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+
+  .cabecalho-acesso { padding: 48px 0 32px; }
+
+  .selo-liberado {
+    display: inline-block;
+    font-family: 'Special Elite', monospace;
+    font-size: 11px;
+    color: var(--archive-green-dark);
+    background: var(--stamp-red);
+    padding: 4px 12px;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+
+  .cabecalho-acesso h1 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--archive-green-dark);
+    margin-bottom: 12px;
+  }
+
+  .cabecalho-acesso p { color: var(--archive-green-dark); max-width: 560px; }
+
+  .aviso-professor {
+    background: var(--paper-shadow);
+    border-left: 3px solid var(--stamp-red);
+    padding: 16px 18px;
+    margin: 24px 0 40px;
+    font-size: 14px;
+  }
+
+  /* ===== BLOCOS DE CONTEÚDO ===== */
+  .bloco {
+    background: var(--paper);
+    border: 1px solid var(--kraft);
+    padding: 32px;
+    box-shadow: 3px 4px 0 rgba(44, 59, 46, 0.06);
+    margin-bottom: 32px;
+  }
+
+  .bloco-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .bloco-icone { font-size: 20px; }
+
+  .bloco-numero {
+    font-family: 'Special Elite', monospace;
+    font-size: 12px;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+  }
+
+  .bloco-titulo {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--archive-green-dark);
+    margin-bottom: 14px;
+  }
+
+  .bloco-objetivo {
+    font-size: 14.5px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--kraft);
+  }
+
+  .bloco-objetivo strong { color: var(--navy); }
+
+  .ferramenta {
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed var(--kraft);
+  }
+
+  .ferramenta:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .ferramenta-nome {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .ferramenta-etiqueta {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 500;
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    color: var(--navy);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .ferramenta-descricao { font-size: 14px; margin-bottom: 14px; }
+
+  .ferramenta-link {
+    display: inline-block;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--paper);
+    background: var(--archive-green-dark);
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-bottom: 16px;
+  }
+
+  .ferramenta-link:hover { opacity: 0.9; }
+
+  .passo {
+    font-size: 13.5px;
+    margin-bottom: 6px;
+  }
+
+  .passo strong { color: var(--navy); }
+
+  .aplicando {
+    background: var(--paper-shadow);
+    border-left: 3px solid var(--stamp-red);
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-size: 13.5px;
+  }
+
+  .observacao-importante {
+    background: #FDF0F0;
+    border-left: 3px solid #C0392B;
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-size: 13px;
+  }
+
+  /* ===== FECHAMENTO ===== */
+  .fechamento {
+    background: var(--navy);
+    color: var(--paper);
+    padding: 40px 32px;
+    margin: 48px 0;
+    text-align: center;
+  }
+
+  .fechamento h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .recapitulacao {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    text-align: left;
+    margin: 24px 0;
+  }
+
+  .recap-item { font-size: 13.5px; }
+  .recap-item strong { display: block; margin-bottom: 2px; }
+
+  .fechamento .frase-final {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 16px;
+    margin-top: 24px;
+  }
+
+  .site-footer {
+    background: var(--navy);
+    color: var(--paper);
+    text-align: center;
+    padding: 22px 24px;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 12px;
+  }
+
+  .site-footer a { color: var(--paper); text-decoration: underline; font-weight: 500; }
+
+  @media (max-width: 600px) {
+    .bloco { padding: 22px; }
+    .recapitulacao { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===================== TELA: CARREGANDO ===================== -->
+  <div id="tela-carregando" class="tela-estado">
+    <h1>Verificando seu acesso...</h1>
+    <p>Só um instante enquanto confirmamos seu pagamento.</p>
+  </div>
+
+  <!-- ===================== TELA: ERRO / SEM ACESSO ===================== -->
+  <div id="tela-erro" class="tela-estado" style="display:none;">
+    <h1>Não encontramos esse acesso</h1>
+    <p>O link pode estar incompleto ou incorreto. Se você já comprou o Plano de Estudo de IAs e recebeu um e-mail de confirmação, verifique se copiou o link certinho — ou chame no WhatsApp que a gente resolve rapidinho.</p>
+    <a class="whatsapp" href="https://wa.me/5547999193829?text=Oi%20Sara!%20Comprei%20o%20Plano%20de%20Estudo%20de%20IAs%20mas%20n%C3%A3o%20consigo%20acessar%20o%20conte%C3%BAdo" target="_blank" rel="noopener">📱 Falar no WhatsApp</a>
+  </div>
+
+  <!-- ===================== TELA: CONTEÚDO LIBERADO ===================== -->
+  <div id="tela-conteudo" style="display:none;">
+
+    <div class="top-bar">ACESSO LIBERADO · CONTEÚDO COMPLETO</div>
+
+    <div class="container">
+      <div class="cabecalho-acesso">
+        <span class="selo-liberado">✓ COMPRA CONFIRMADA</span>
+        <h1>Seu Plano de Estudo de IAs, na íntegra</h1>
+        <p>A partir daqui você tem acesso ao nome de cada ferramenta, o link direto pra usar, e o passo a passo de como aplicar na sua prática. Vá em ordem ou pule direto pro bloco que mais te interessa agora.</p>
+      </div>
+
+      <div class="aviso-professor">
+        <strong>Lembre-se:</strong> a tecnologia pode apoiar o processo, mas a intencionalidade pedagógica continua sendo sua. Use cada ferramenta como uma aliada — questione, experimente, adapte e revise antes de levar pra sala de aula.
+      </div>
+
+      <!-- ===== BLOCO 01 ===== -->
+      <div class="bloco" id="bloco-01">
+        <div class="bloco-top"><span class="bloco-icone">🧠</span><span class="bloco-numero">BLOCO 01</span></div>
+        <h2 class="bloco-titulo">Planejar com IA</h2>
+        <div class="bloco-objetivo"><strong>Objetivo:</strong> utilizar a Inteligência Artificial como apoio ao planejamento de aulas, atividades e estratégias pedagógicas.</div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">Eduaide.Ai</div>
+          <div class="ferramenta-etiqueta">🏷️ Planejamento de aulas</div>
+          <div class="ferramenta-descricao">Ferramenta de IA voltada à criação de planos de aula, atividades, organizadores gráficos, jogos, avaliações e outros materiais pedagógicos.</div>
+          <a class="ferramenta-link" href="https://www.eduaide.ai/" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="passo"><strong>Conhecer:</strong> compreenda como a ferramenta pode auxiliar na preparação das aulas.</div>
+          <div class="passo"><strong>Explorar:</strong> conheça os recursos disponíveis para planejamento e criação de materiais.</div>
+          <div class="passo"><strong>Experimentar:</strong> escolha um conteúdo e gere uma primeira proposta de aula.</div>
+          <div class="passo"><strong>Refletir:</strong> o material produzido está adequado aos objetivos e à realidade da sua turma?</div>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> utilize a ferramenta para criar ou aprimorar o planejamento de uma aula que você realmente irá ministrar.</div>
+        </div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">MagicSchool</div>
+          <div class="ferramenta-etiqueta">🏷️ Assistente pedagógico</div>
+          <div class="ferramenta-descricao">Plataforma de IA desenvolvida para apoiar professores em diferentes tarefas pedagógicas, incluindo planejamento e criação de recursos.</div>
+          <a class="ferramenta-link" href="https://www.magicschool.ai/" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> escolha uma ferramenta dentro da plataforma e utilize-a para resolver uma necessidade real do seu planejamento.</div>
+        </div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">Teachy</div>
+          <div class="ferramenta-etiqueta">🏷️ Planejamento e atividades</div>
+          <div class="ferramenta-descricao">Plataforma de IA para professores que reúne recursos para planejamento, aulas, atividades, avaliações, slides, resumos e outros materiais pedagógicos.</div>
+          <a class="ferramenta-link" href="https://www.teachy.com.br/pt-BR" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> crie uma aula ou atividade utilizando um conteúdo que você já trabalha com seus estudantes.</div>
+        </div>
+      </div>
+
+      <!-- ===== BLOCO 02 ===== -->
+      <div class="bloco" id="bloco-02">
+        <div class="bloco-top"><span class="bloco-icone">📝</span><span class="bloco-numero">BLOCO 02</span></div>
+        <h2 class="bloco-titulo">Avaliar com IA</h2>
+        <div class="bloco-objetivo"><strong>Objetivo:</strong> utilizar a Inteligência Artificial como apoio à elaboração de questões e instrumentos avaliativos.</div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">QuestionWell</div>
+          <div class="ferramenta-etiqueta">🏷️ Criação de questões</div>
+          <div class="ferramenta-descricao">Ferramenta voltada à criação de questões e atividades a partir de conteúdos fornecidos pelo professor.</div>
+          <a class="ferramenta-link" href="https://www.questionwell.org/" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="passo">💡 <strong>Conhecer:</strong> compreenda como a IA pode auxiliar na elaboração de questões.</div>
+          <div class="passo">🔎 <strong>Explorar:</strong> observe diferentes possibilidades de questões e formatos.</div>
+          <div class="passo">🧪 <strong>Experimentar:</strong> insira um texto ou conteúdo que você já utiliza em sala.</div>
+          <div class="passo">💭 <strong>Refletir:</strong> as questões produzidas realmente avaliam os objetivos de aprendizagem?</div>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> crie 5 questões para utilizar em uma atividade de revisão, avaliação formativa ou retomada de conteúdo.</div>
+          <div class="observacao-importante"><strong>Importante:</strong> toda questão gerada por IA deve ser revisada pelo professor antes de ser utilizada com os estudantes.</div>
+        </div>
+      </div>
+
+      <!-- ===== BLOCO 03 ===== -->
+      <div class="bloco" id="bloco-03">
+        <div class="bloco-top"><span class="bloco-icone">🎨</span><span class="bloco-numero">BLOCO 03</span></div>
+        <h2 class="bloco-titulo">Criar com IA</h2>
+        <div class="bloco-objetivo"><strong>Objetivo:</strong> transformar conteúdos pedagógicos em materiais visuais, apresentações e experiências de aprendizagem.</div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">Canva</div>
+          <div class="ferramenta-etiqueta">🏷️ Criação visual</div>
+          <div class="ferramenta-descricao">Criação de apresentações, infográficos, materiais didáticos e outros recursos visuais com apoio de recursos de IA.</div>
+          <a class="ferramenta-link" href="https://www.canva.com/" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> crie um infográfico ou material visual para uma aula da sua disciplina.</div>
+        </div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">Gamma</div>
+          <div class="ferramenta-etiqueta">🏷️ Apresentações com IA</div>
+          <div class="ferramenta-descricao">Transforma ideias, textos, documentos ou comandos em apresentações visualmente estruturadas. A plataforma também permite editar e exportar os materiais em diferentes formatos.</div>
+          <a class="ferramenta-link" href="https://gamma.app/" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> escolha um conteúdo que você apresentaria em aula e crie uma apresentação utilizando a Gamma.</div>
+        </div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">Curipod</div>
+          <div class="ferramenta-etiqueta">🏷️ Conteúdo interativo</div>
+          <div class="ferramenta-descricao">Ferramenta voltada à criação de experiências de aprendizagem e apresentações interativas.</div>
+          <a class="ferramenta-link" href="https://curipod.com/" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> crie uma atividade ou apresentação que inclua um momento de participação dos estudantes.</div>
+        </div>
+      </div>
+
+      <!-- ===== BLOCO 04 ===== -->
+      <div class="bloco" id="bloco-04">
+        <div class="bloco-top"><span class="bloco-icone">🎯</span><span class="bloco-numero">BLOCO 04</span></div>
+        <h2 class="bloco-titulo">Interagir com IA</h2>
+        <div class="bloco-objetivo"><strong>Objetivo:</strong> ampliar a participação dos estudantes por meio de atividades e recursos interativos.</div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">Nearpod</div>
+          <div class="ferramenta-etiqueta">🏷️ Aula interativa</div>
+          <div class="ferramenta-descricao">Plataforma para criação e apresentação de experiências de aprendizagem interativas.</div>
+          <a class="ferramenta-link" href="https://nearpod.com/" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> transforme uma apresentação ou parte de uma aula em uma experiência interativa.</div>
+        </div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">LessonLab</div>
+          <div class="ferramenta-etiqueta">🏷️ Atividades pedagógicas</div>
+          <div class="ferramenta-descricao">Ferramenta voltada ao apoio na criação e organização de experiências e atividades de aprendizagem.</div>
+          <a class="ferramenta-link" href="https://www.lessonlab.ai/" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> experimente criar uma atividade relacionada a um conteúdo que você já trabalha em sala.</div>
+        </div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">Wordwall</div>
+          <div class="ferramenta-etiqueta">🏷️ Jogos educativos</div>
+          <div class="ferramenta-descricao">Criação de jogos e atividades interativas, como quizzes, roletas, associações e outras propostas de revisão.</div>
+          <a class="ferramenta-link" href="https://wordwall.net/" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> crie um jogo rápido para revisar um conteúdo já trabalhado com sua turma.</div>
+        </div>
+      </div>
+
+      <!-- ===== BLOCO 05 ===== -->
+      <div class="bloco" id="bloco-05">
+        <div class="bloco-top"><span class="bloco-icone">🔎</span><span class="bloco-numero">BLOCO 05</span></div>
+        <h2 class="bloco-titulo">Pesquisar, criar e apoiar</h2>
+        <div class="bloco-objetivo"><strong>Objetivo:</strong> conhecer diferentes assistentes de Inteligência Artificial e compreender que cada ferramenta pode atender a necessidades diferentes.</div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">Perplexity</div>
+          <div class="ferramenta-etiqueta">🏷️ Pesquisa com fontes</div>
+          <div class="ferramenta-descricao">Ferramenta de pesquisa com IA que consulta a web e apresenta respostas acompanhadas de fontes citadas.</div>
+          <a class="ferramenta-link" href="https://www.perplexity.ai/" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> utilize a ferramenta para pesquisar um tema que você precisa aprofundar para uma aula.</div>
+        </div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">ChatGPT</div>
+          <div class="ferramenta-etiqueta">🏷️ Assistente de IA</div>
+          <div class="ferramenta-descricao">Assistente de IA que pode apoiar o professor na criação de ideias, planejamento, produção e revisão de conteúdos, elaboração de atividades e outras tarefas.</div>
+          <a class="ferramenta-link" href="https://chatgpt.com/" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> peça à IA que proponha uma estratégia para trabalhar um conteúdo específico com seus estudantes e depois adapte a proposta à sua realidade.</div>
+        </div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">Gemini</div>
+          <div class="ferramenta-etiqueta">🏷️ Assistente de IA</div>
+          <div class="ferramenta-descricao">Assistente de IA do Google para apoiar atividades de criação, organização, aprendizagem e pesquisa.</div>
+          <a class="ferramenta-link" href="https://gemini.google.com/" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> utilize o Gemini para criar uma proposta de atividade relacionada a um conteúdo que você está trabalhando.</div>
+        </div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">Microsoft Copilot</div>
+          <div class="ferramenta-etiqueta">🏷️ Produtividade com IA</div>
+          <div class="ferramenta-descricao">Assistente de IA da Microsoft para apoiar criação, escrita, pesquisa e tarefas de produtividade. A Microsoft também disponibiliza o Copilot em seus ambientes e aplicativos de produtividade.</div>
+          <a class="ferramenta-link" href="https://copilot.microsoft.com/" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> utilize o Copilot para apoiar a criação ou organização de um material que você precisa produzir.</div>
+        </div>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">NotebookLM</div>
+          <div class="ferramenta-etiqueta">🏷️ Pesquisa com suas fontes</div>
+          <div class="ferramenta-descricao">Ferramenta voltada ao estudo e à exploração de materiais fornecidos pelo próprio usuário, como documentos e textos.</div>
+          <a class="ferramenta-link" href="https://notebooklm.google.com/" target="_blank" rel="noopener">🔗 Acessar plataforma</a>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> insira um documento ou material de estudo e faça perguntas à ferramenta para aprofundar sua compreensão sobre o conteúdo.</div>
+        </div>
+      </div>
+
+      <!-- ===== BLOCO 06 (BÔNUS) ===== -->
+      <div class="bloco" id="bloco-06">
+        <div class="bloco-top"><span class="bloco-icone">🏛️</span><span class="bloco-numero">BLOCO 06 (BÔNUS)</span></div>
+        <h2 class="bloco-titulo">Inteligência Artificial na Educação</h2>
+        <div style="font-size:13px; color:var(--navy); font-weight:500; margin-bottom:14px;">BLOCO TEMÁTICO 3 — FORMAÇÃO OFICIAL DO MEC</div>
+        <div class="bloco-objetivo"><strong>Objetivo:</strong> ampliar a compreensão sobre a Inteligência Artificial na Educação por meio de uma referência institucional do Ministério da Educação.</div>
+
+        <p style="font-size:14px; margin-bottom:16px;">Nesta etapa, você será direcionado ao <strong>Bloco Temático 3 — Inteligência Artificial na Educação</strong>, disponibilizado pelo <strong>Ministério da Educação — MEC</strong>, dentro do programa <strong>Escolas Conectadas</strong>.</p>
+
+        <div class="ferramenta">
+          <div class="ferramenta-nome">Formação oficial — Bloco Temático 3</div>
+          <a class="ferramenta-link" href="https://www.gov.br/mec/pt-br/escolas-conectadas/bloco-tematico-3-inteligencia-artificial-na-educacao" target="_blank" rel="noopener">🔗 Acessar no Gov.br →</a>
+          <div class="passo">💡 <strong>Conhecer:</strong> conheça a proposta de formação sobre Inteligência Artificial na Educação.</div>
+          <div class="passo">🔎 <strong>Explorar:</strong> explore os conteúdos e materiais disponibilizados pelo MEC.</div>
+          <div class="passo">🧪 <strong>Experimentar:</strong> escolha uma ideia apresentada no percurso e relacione-a à sua realidade profissional.</div>
+          <div class="passo">💭 <strong>Refletir:</strong> quais possibilidades e cuidados devem ser considerados na utilização da IA no contexto educacional?</div>
+          <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> escolha uma ideia ou estratégia aprendida ao longo deste percurso e registre como ela poderá ser incorporada à sua prática pedagógica.</div>
+        </div>
+      </div>
+
+      <!-- ===== FECHAMENTO ===== -->
+      <div class="fechamento">
+        <h2>🌱 Concluindo o percurso</h2>
+        <p>Você passou por seis grandes possibilidades de utilização da Inteligência Artificial na educação:</p>
+        <div class="recapitulacao">
+          <div class="recap-item"><strong>🧠 Planejar</strong>Organizar e preparar aulas.</div>
+          <div class="recap-item"><strong>📝 Avaliar</strong>Criar e revisar instrumentos avaliativos.</div>
+          <div class="recap-item"><strong>🎨 Criar</strong>Produzir materiais e recursos pedagógicos.</div>
+          <div class="recap-item"><strong>🎯 Interagir</strong>Ampliar a participação dos estudantes.</div>
+          <div class="recap-item"><strong>🔎 Pesquisar e apoiar</strong>Explorar informações, ideias e conhecimentos.</div>
+          <div class="recap-item"><strong>🏛️ Ampliar</strong>Continuar sua formação sobre IA na educação.</div>
+        </div>
+        <p style="margin-top:20px;"><strong>✨ Para levar com você:</strong> você não precisa conhecer todas as ferramentas de Inteligência Artificial. Precisa aprender a fazer boas perguntas, analisar os resultados, reconhecer limites e escolher a ferramenta adequada para cada necessidade pedagógica.</p>
+        <p class="frase-final">"A Inteligência Artificial pode produzir respostas.<br>É o professor quem transforma possibilidades em aprendizagem."</p>
+        <p style="margin-top:16px; font-size:13px;">— Sara Reinhardt, Doutora em Educação e Novas Tecnologias</p>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      Desenvolvido por <a href="https://instagram.com/nancysantana.dev" target="_blank" rel="noopener">@nancysantana.dev</a>
+    </footer>
+  </div>
+
+</body>
+</html>
