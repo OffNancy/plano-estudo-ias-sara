@@ -10,7 +10,7 @@
 const { MercadoPagoConfig, Preference } = require('mercadopago');
 
 const SITE_URL = process.env.SITE_URL || 'https://e-book-sara.netlify.app';
-const PRECO = 29.90; // ajustar depois de confirmar o valor final com a Sara
+const PRECO = 49.90; // ajustar depois de confirmar o valor final com a Sara
 const NOME_PRODUTO = 'Plano de Estudo de IAs para Professores e Pesquisadores';
 
 exports.handler = async (event) => {
