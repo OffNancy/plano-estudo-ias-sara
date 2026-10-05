@@ -815,6 +815,77 @@
     color: var(--navy);
     font-weight: 500;
   }
+
+  /* ===== Modal de compra (nome + e-mail) ===== */
+  .compra-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 61, 51, 0.55);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .compra-overlay.aberto { display: flex; }
+  .compra-modal {
+    background: var(--paper);
+    border: 1px solid var(--archive-green-dark);
+    box-shadow: 6px 6px 0 var(--kraft);
+    width: 100%;
+    max-width: 420px;
+    padding: 28px 24px;
+    position: relative;
+  }
+  .compra-modal h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 22px;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+  .compra-modal p.compra-aviso {
+    font-size: 14px;
+    margin-bottom: 18px;
+    opacity: 0.85;
+  }
+  .compra-fechar {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--archive-green-dark);
+  }
+  .compra-campo { margin-bottom: 14px; }
+  .compra-campo label {
+    display: block;
+    font-family: 'Special Elite', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .compra-campo input {
+    width: 100%;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 16px;
+    padding: 12px;
+    border: 1px solid var(--archive-green-dark);
+    background: #fff;
+    color: var(--archive-green-dark);
+    border-radius: 0;
+  }
+  .compra-campo input:focus { outline: 2px solid var(--stamp-red); outline-offset: 1px; }
+  .compra-erro {
+    color: #9b1c1c;
+    font-size: 13px;
+    min-height: 18px;
+    margin-bottom: 8px;
+  }
+  .compra-modal .hero-cta { width: 100%; text-align: center; }
 </style>
 </head>
 <body>
@@ -832,7 +903,7 @@
           Área: Educação e Tecnologias · 6 módulos
         </div>
         <div class="hero-actions">
-          <a href="#" class="hero-cta" id="btn-comprar" onclick="iniciarCompra(event)">Comprar agora</a>
+          <a href="#" class="hero-cta" id="btn-comprar" onclick="abrirCompra(event)">Comprar agora</a>
           <a href="#semana-1" class="hero-cta secondary">Ver módulos</a>
         </div>
 
@@ -1170,11 +1241,67 @@
     Desenvolvido por <a href="https://instagram.com/nancysantana.dev" target="_blank" rel="noopener">@nancysantana.dev</a>
   </footer>
 
+  <div class="compra-overlay" id="compra-overlay" aria-hidden="true">
+    <div class="compra-modal" role="dialog" aria-modal="true" aria-labelledby="compra-titulo">
+      <button type="button" class="compra-fechar" onclick="fecharCompra()" aria-label="Fechar">&times;</button>
+      <h2 id="compra-titulo">Para onde enviamos o material?</h2>
+      <p class="compra-aviso">Depois que o pagamento for confirmado, o PDF chega automaticamente no e-mail que você informar aqui. Confira com atenção.</p>
+      <div class="compra-campo">
+        <label for="compra-nome">Seu nome</label>
+        <input type="text" id="compra-nome" autocomplete="name" placeholder="Nome completo">
+      </div>
+      <div class="compra-campo">
+        <label for="compra-email">Seu e-mail</label>
+        <input type="email" id="compra-email" autocomplete="email" inputmode="email" placeholder="voce@email.com">
+      </div>
+      <div class="compra-campo">
+        <label for="compra-email2">Confirme o e-mail</label>
+        <input type="email" id="compra-email2" autocomplete="off" inputmode="email" placeholder="Digite o e-mail novamente">
+      </div>
+      <div class="compra-erro" id="compra-erro"></div>
+      <button type="button" class="hero-cta" id="compra-enviar" onclick="iniciarCompra()">Ir para o pagamento</button>
+    </div>
+  </div>
+
   <script>
-    async function iniciarCompra(event) {
+
+  <script>
+    function abrirCompra(event) {
       event.preventDefault();
-      var btn = event.currentTarget;
+      var ov = document.getElementById('compra-overlay');
+      ov.classList.add('aberto');
+      ov.setAttribute('aria-hidden', 'false');
+      document.getElementById('compra-erro').textContent = '';
+      setTimeout(function () { document.getElementById('compra-nome').focus(); }, 50);
+    }
+
+    function fecharCompra() {
+      var ov = document.getElementById('compra-overlay');
+      ov.classList.remove('aberto');
+      ov.setAttribute('aria-hidden', 'true');
+    }
+
+    document.getElementById('compra-overlay').addEventListener('click', function (e) {
+      if (e.target === this) fecharCompra();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') fecharCompra();
+    });
+
+    async function iniciarCompra() {
+      var nome = document.getElementById('compra-nome').value.trim();
+      var email = document.getElementById('compra-email').value.trim().toLowerCase();
+      var email2 = document.getElementById('compra-email2').value.trim().toLowerCase();
+      var erro = document.getElementById('compra-erro');
+      var btn = document.getElementById('compra-enviar');
       var textoOriginal = btn.textContent;
+
+      var emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+      if (nome.length < 2) { erro.textContent = 'Informe seu nome.'; return; }
+      if (!emailValido) { erro.textContent = 'Informe um e-mail válido.'; return; }
+      if (email !== email2) { erro.textContent = 'Os e-mails não são iguais. Confira e tente de novo.'; return; }
+
+      erro.textContent = '';
       btn.textContent = 'Aguarde...';
       btn.style.pointerEvents = 'none';
 
@@ -1182,20 +1309,20 @@
         var resposta = await fetch('/.netlify/functions/create-preference', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({})
+          body: JSON.stringify({ nome: nome, email: email })
         });
         var dados = await resposta.json();
 
         if (dados.init_point) {
           window.location.href = dados.init_point;
         } else {
-          alert('Não foi possível iniciar o pagamento. Tente novamente em alguns instantes.');
+          erro.textContent = 'Não foi possível iniciar o pagamento. Tente novamente em instantes.';
           btn.textContent = textoOriginal;
           btn.style.pointerEvents = 'auto';
         }
-      } catch (erro) {
-        console.error(erro);
-        alert('Não foi possível iniciar o pagamento. Tente novamente em alguns instantes.');
+      } catch (e) {
+        console.error(e);
+        erro.textContent = 'Não foi possível iniciar o pagamento. Tente novamente em instantes.';
         btn.textContent = textoOriginal;
         btn.style.pointerEvents = 'auto';
       }
