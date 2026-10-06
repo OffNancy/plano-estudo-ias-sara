@@ -30,11 +30,21 @@ exports.handler = async (event) => {
     const preference = new Preference(client);
 
     let payerEmail;
+    let payerNome;
     try {
       const body = JSON.parse(event.body || '{}');
-      payerEmail = body.email;
+      payerEmail = String(body.email || '').trim().toLowerCase();
+      payerNome = String(body.nome || '').trim();
     } catch (_) {
-      // sem e-mail informado, segue sem preencher — o Mercado Pago pede na tela
+      // corpo inválido — tratado logo abaixo
+    }
+
+    // O e-mail é obrigatório: é para ele que o material será enviado
+    if (!payerEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(payerEmail)) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'E-mail inválido ou não informado' }),
+      };
     }
 
     const result = await preference.create({
@@ -47,7 +57,7 @@ exports.handler = async (event) => {
             currency_id: 'BRL',
           },
         ],
-        payer: payerEmail ? { email: payerEmail } : undefined,
+        payer: { email: payerEmail, name: payerNome || undefined },
         back_urls: {
           success: `${SITE_URL}/sucesso.html`,
           failure: `${SITE_URL}/`,
@@ -55,7 +65,8 @@ exports.handler = async (event) => {
         },
         auto_return: 'approved',
         notification_url: `${SITE_URL}/.netlify/functions/mp-webhook`,
-        metadata: { produto: 'plano-ias-sara' },
+        // O e-mail digitado no site fica gravado no pagamento e é usado pelo webhook
+        metadata: { produto: 'plano-ias-sara', email: payerEmail, nome: payerNome },
       },
     });
 

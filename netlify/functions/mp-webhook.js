@@ -45,7 +45,8 @@ exports.handler = async (event) => {
       return { statusCode: 200, body: `status: ${paymentInfo.status}` };
     }
 
-    const buyerEmail = paymentInfo.payer?.email;
+    // Prioriza o e-mail digitado no formulário do site; se não vier, usa o da conta do Mercado Pago
+    const buyerEmail = paymentInfo.metadata?.email || paymentInfo.payer?.email;
     if (!buyerEmail) {
       console.error('Pagamento aprovado sem e-mail do comprador:', paymentId);
       return { statusCode: 200, body: 'approved but no email' };
