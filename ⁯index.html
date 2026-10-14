@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de Estudo de IAs para Professores e Pesquisadores — Sara Reinhardt</title>
+<meta name="description" content="Um guia progressivo de 6 semanas para levar ferramentas de inteligência artificial da teoria para a sala de aula. Por Sara Reinhardt, Doutora em Educação e Novas Tecnologias.">
+
+<!-- Open Graph (WhatsApp, Instagram, Facebook) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Plano de Estudo de IAs para Professores e Pesquisadores">
+<meta property="og:description" content="Um guia progressivo de 6 semanas para levar ferramentas de inteligência artificial da teoria para a sala de aula. Por Sara Reinhardt, Doutora em Educação e Novas Tecnologias.">
+<meta property="og:image" content="https://res.cloudinary.com/deyg6jktu/image/upload/e_sharpen:60,q_auto:best,f_auto,w_1200,h_630,c_fill,g_face/v1789657393/WhatsApp_Image_2026-09-15_at_16.59.23_axr5i8.jpg">
+<meta property="og:url" content="https://e-book-sara.netlify.app">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Twitter Card (usa o mesmo padrão pra outras plataformas) -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Plano de Estudo de IAs para Professores e Pesquisadores">
+<meta name="twitter:description" content="Um guia progressivo de 6 semanas para levar ferramentas de IA da teoria para a sala de aula.">
+<meta name="twitter:image" content="https://res.cloudinary.com/deyg6jktu/image/upload/e_sharpen:60,q_auto:best,f_auto,w_1200,h_630,c_fill,g_face/v1789657393/WhatsApp_Image_2026-09-15_at_16.59.23_axr5i8.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Public+Sans:wght@400;500&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F8F9FA;
+    --paper-shadow: #E8DCC6;
+    --archive-green: #0F3D33;
+    --archive-green-dark: #0F3D33;
+    --stamp-red: #D4AF37;
+    --kraft: #E8DCC6;
+    --navy: #0D2B4A;
+    --sage: #A7B7A4;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--archive-green-dark);
+    font-family: 'Public Sans', sans-serif;
+    line-height: 1.6;
+  }
+
+  /* Textura sutil de papel via ruído CSS leve */
+  body {
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(0,0,0,0.015) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(0,0,0,0.015) 0%, transparent 50%);
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ===== BARRA DE ARQUIVO (topo) ===== */
+  .top-bar {
+    background: var(--navy);
+    color: var(--paper);
+    padding: 10px 24px;
+    text-align: center;
+    font-family: 'Special Elite', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--kraft);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .hero-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hero-label {
+    font-family: 'Special Elite', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+
+  .hero-title {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.15;
+    color: var(--archive-green-dark);
+    margin-bottom: 20px;
+    max-width: 480px;
+  }
+
+  .hero-subtitle {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 16px;
+    color: var(--archive-green);
+    max-width: 460px;
+    margin-bottom: 32px;
+  }
+
+  .hero-citation {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 13px;
+    color: var(--archive-green);
+    border-left: 2px solid var(--navy);
+    padding-left: 16px;
+    line-height: 1.7;
+  }
+
+  .credencial-placeholder {
+    color: var(--stamp-red);
+    opacity: 0.7;
+  }
+
+  .credencial-confirmada {
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 32px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--archive-green-dark);
+    color: var(--paper);
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 16px 28px;
+    text-decoration: none;
+    border: 1px solid var(--archive-green-dark);
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .hero-cta:hover {
+    transform: translateY(-1px);
+    opacity: 0.96;
+  }
+
+  .hero-cta.secondary {
+    background: transparent;
+    color: var(--archive-green-dark);
+    border-color: var(--kraft);
+  }
+
+  /* ===== GAVETA DE FICHÁRIO (ilustração do hero) ===== */
+  .hero-drawer {
+    flex-shrink: 0;
+    width: 220px;
+    display: none;
+  }
+
+  .drawer-tabs {
+    display: flex;
+    gap: 4px;
+    padding-left: 14px;
+  }
+
+  .drawer-tab {
+    width: 26px;
+    height: 22px;
+    background: var(--paper-shadow);
+    border: 1px solid var(--kraft);
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+    font-family: 'Special Elite', monospace;
+    font-size: 10px;
+    color: var(--archive-green);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: height 0.15s ease;
+  }
+
+  .drawer-tab:hover {
+    height: 26px;
+  }
+
+  .drawer-tab.active {
+    background: var(--paper);
+    border-color: var(--stamp-red);
+    color: var(--navy);
+    height: 26px;
+  }
+
+  .drawer-box {
+    background: var(--paper);
+    border: 1px solid var(--kraft);
+    border-radius: 2px;
+    height: 130px;
+    box-shadow: 3px 4px 0 rgba(44, 59, 46, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .drawer-plate {
+    background: var(--navy);
+    color: var(--paper);
+    font-family: 'Special Elite', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    padding: 5px 10px;
+    text-align: center;
+  }
+
+  .drawer-handle {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 6px;
+    border: 1.5px solid var(--kraft);
+    border-radius: 3px;
+  }
+
+  @media (min-width: 700px) {
+    .hero-drawer { display: block; }
+  }
+
+  /* ===== VERSÃO MOBILE SIMPLIFICADA (só as abas, sem a caixa) ===== */
+  .hero-drawer-mobile {
+    display: flex;
+    gap: 6px;
+    margin-top: 28px;
+    padding-bottom: 2px;
+  }
+
+  .hero-drawer-mobile .drawer-tab {
+    width: 32px;
+    height: 26px;
+    font-size: 11px;
+  }
+
+  .hero-drawer-mobile .drawer-tab.active {
+    height: 30px;
+  }
+
+  @media (min-width: 700px) {
+    .hero-drawer-mobile { display: none; }
+  }
+
+  /* ===== FICHA (exemplo semana 1) ===== */
+  .fichas-section {
+    padding: 60px 0 100px;
+  }
+
+  .section-intro {
+    font-family: 'Special Elite', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--archive-green);
+    margin-bottom: 28px;
+  }
+
+  .ficha {
+    background: var(--paper);
+    border: 1px solid var(--kraft);
+    padding: 32px;
+    max-width: 560px;
+    position: relative;
+    box-shadow: 3px 4px 0 rgba(44, 59, 46, 0.06);
+    margin-bottom: 40px;
+  }
+
+  .ficha-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .ficha-numero {
+    font-family: 'Special Elite', monospace;
+    font-size: 13px;
+    color: var(--navy);
+    font-weight: bold;
+  }
+
+  .ficha-selo {
+    font-family: 'Special Elite', monospace;
+    font-size: 10.5px;
+    color: var(--archive-green-dark);
+    background: var(--stamp-red);
+    border: 1.5px solid var(--stamp-red);
+    padding: 3px 10px;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+  }
+
+  .ficha-divider {
+    border: none;
+    border-top: 1px solid var(--kraft);
+    margin: 0 0 20px;
+  }
+
+  .ficha-title {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--archive-green-dark);
+    margin-bottom: 12px;
+  }
+
+  .ficha-tools {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 500;
+    font-size: 13.5px;
+    color: var(--navy);
+    letter-spacing: 0.01em;
+    margin-bottom: 18px;
+  }
+
+  .ficha-body {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 14.5px;
+    color: var(--archive-green-dark);
+    margin-bottom: 24px;
+  }
+
+  .ficha-desafio {
+    background: var(--paper-shadow);
+    border-left: 3px solid var(--stamp-red);
+    padding: 16px 18px;
+  }
+
+  .ficha-desafio-label {
+    font-family: 'Special Elite', monospace;
+    font-size: 11px;
+    color: var(--archive-green-dark);
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .ficha-como-usar {
+    margin: 20px 0 24px;
+  }
+
+  .ficha-como-usar-label {
+    font-family: 'Special Elite', monospace;
+    font-size: 11px;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .ficha-passos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ficha-passos li {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 13.5px;
+    color: var(--archive-green-dark);
+    line-height: 1.55;
+    margin-bottom: 8px;
+    padding-left: 28px;
+    position: relative;
+    counter-increment: passo;
+  }
+
+  .ficha-passos {
+    counter-reset: passo;
+  }
+
+  .ficha-passos li::before {
+    content: counter(passo);
+    position: absolute;
+    left: 0;
+    top: -1px;
+    width: 20px;
+    height: 20px;
+    background: var(--navy);
+    color: var(--paper);
+    border-radius: 50%;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ficha-prompt {
+    background: var(--paper);
+    border: 1.5px dashed var(--navy);
+    padding: 14px 18px;
+    margin-top: 14px;
+    border-radius: 2px;
+  }
+
+  .ficha-prompt-label {
+    font-family: 'Special Elite', monospace;
+    font-size: 10px;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .ficha-prompt-text {
+    font-family: 'Public Sans', sans-serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--archive-green-dark);
+    line-height: 1.55;
+  }
+
+  .ficha-desafio-text {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 13.5px;
+    color: var(--archive-green-dark);
+  }
+
+  .preview-tag {
+    max-width: 560px;
+    margin: 0 auto 24px;
+    font-family: 'Special Elite', monospace;
+    font-size: 11px;
+    color: var(--kraft);
+    text-align: center;
+  }
+
+  /* ===== SOBRE A AUTORA (ficha de identificação) ===== */
+  .autora-section {
+    padding: 20px 0 100px;
+    border-top: 1px solid var(--kraft);
+  }
+
+  .autora-card {
+    background: var(--paper);
+    border: 1px solid var(--kraft);
+    max-width: 560px;
+    padding: 32px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    position: relative;
+    box-shadow: 3px 4px 0 rgba(44, 59, 46, 0.06);
+  }
+
+  .autora-foto-wrap {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .autora-foto {
+    width: 150px;
+    height: 180px;
+    background: var(--paper-shadow);
+    border: 1px solid var(--kraft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Special Elite', monospace;
+    font-size: 10px;
+    color: var(--kraft);
+    text-align: center;
+    padding: 8px;
+  }
+
+  .autora-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* "clipe" no canto da foto, como grampeada numa ficha */
+  .autora-clipe {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 28px;
+    height: 14px;
+    border: 2px solid var(--kraft);
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    opacity: 0.8;
+  }
+
+  .autora-info {
+    flex: 1;
+  }
+
+  .autora-label {
+    font-family: 'Special Elite', monospace;
+    font-size: 10.5px;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .autora-nome {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--archive-green-dark);
+    margin-bottom: 6px;
+  }
+
+  .autora-credencial {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 500;
+    font-size: 12.5px;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+
+  .autora-bio {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 13.5px;
+    color: var(--archive-green-dark);
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+
+  .autora-bio-placeholder {
+    color: var(--archive-green);
+    opacity: 0.55;
+    font-style: italic;
+  }
+
+  .autora-bio-full {
+    display: none;
+    border-top: 1px solid var(--kraft);
+    padding-top: 14px;
+    margin-top: 4px;
+  }
+
+  .autora-toggle {
+    background: none;
+    border: none;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 500;
+    font-size: 12.5px;
+    color: var(--navy);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 4px;
+  }
+
+  .autora-toggle:hover {
+    color: var(--archive-green-dark);
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 56px 0 40px; }
+    .hero-title { font-size: 30px; }
+    .ficha { padding: 24px; transform: rotate(0deg); }
+    .autora-card { flex-direction: column; align-items: center; text-align: center; padding: 24px; }
+    .autora-info { text-align: left; }
+  }
+
+  /* ===== CHAT DE PERGUNTAS PRONTAS ===== */
+  .chat-bubble {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    width: 58px;
+    height: 58px;
+    background: var(--archive-green-dark);
+    border-radius: 50%;
+    border: 2px solid var(--stamp-red);
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(15, 61, 51, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    z-index: 999;
+    transition: transform 0.15s ease;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .chat-bubble img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .chat-bubble:hover {
+    transform: scale(1.06);
+  }
+
+  .chat-panel {
+    position: fixed;
+    bottom: 92px;
+    right: 22px;
+    width: 320px;
+    max-width: calc(100vw - 44px);
+    max-height: 70vh;
+    overflow-y: auto;
+    background: var(--paper);
+    border: 1px solid var(--kraft);
+    border-radius: 6px;
+    box-shadow: 0 8px 28px rgba(15, 61, 51, 0.25);
+    display: none;
+    z-index: 999;
+  }
+
+  .chat-panel.open {
+    display: block;
+  }
+
+  .chat-panel-header {
+    background: var(--navy);
+    color: var(--paper);
+    padding: 14px 16px;
+    font-family: 'Special Elite', monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .chat-panel-body {
+    padding: 16px;
+  }
+
+  .chat-question-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: var(--paper-shadow);
+    border: 1px solid var(--kraft);
+    border-radius: 4px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 12.5px;
+    color: var(--archive-green-dark);
+    cursor: pointer;
+  }
+
+  .chat-question-btn:hover {
+    background: var(--kraft);
+  }
+
+  .chat-answer {
+    display: none;
+    background: var(--paper);
+    border-left: 3px solid var(--stamp-red);
+    padding: 10px 12px;
+    margin: -4px 0 10px;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 12.5px;
+    color: var(--archive-green-dark);
+    line-height: 1.55;
+  }
+
+  .chat-answer.open {
+    display: block;
+  }
+
+  .chat-whatsapp {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--archive-green-dark);
+    color: var(--paper);
+    border-radius: 4px;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 500;
+    font-size: 12.5px;
+    text-decoration: none;
+  }
+
+  /* ===== RODAPÉ (crédito de desenvolvimento) ===== */
+  .site-footer {
+    background: var(--navy);
+    color: var(--paper);
+    text-align: center;
+    padding: 22px 24px;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 12px;
+  }
+
+  .site-footer a {
+    color: var(--paper);
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  .site-footer a:hover {
+    opacity: 0.85;
+  }
+
+  /* ===== COMO FUNCIONA (5 etapas) ===== */
+  .como-funciona {
+    padding: 8px 0 48px;
+  }
+
+  .cf-intro {
+    font-size: 14.5px;
+    margin-bottom: 28px;
+    max-width: 560px;
+  }
+
+  .cf-intro strong { color: var(--navy); }
+
+  .cf-etapas {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .cf-etapa {
+    background: var(--paper);
+    border: 1px solid var(--kraft);
+    padding: 14px 10px;
+    text-align: center;
+  }
+
+  .cf-numero {
+    font-family: 'Special Elite', monospace;
+    font-size: 11px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .cf-titulo {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--archive-green-dark);
+  }
+
+  .cf-frase {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--navy);
+    border-left: 3px solid var(--stamp-red);
+    padding-left: 14px;
+    margin-bottom: 8px;
+  }
+
+  .teaser-compra {
+    background: var(--paper-shadow);
+    border-left: 3px solid var(--stamp-red);
+    padding: 16px 18px;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .cf-etapas { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ===== IDENTIFICAÇÃO ANÔNIMA DAS FERRAMENTAS (antes da compra) ===== */
+  .identificacoes { margin-bottom: 18px; }
+
+  .identificacao-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--kraft);
+  }
+
+  .identificacao-item:last-child { border-bottom: none; }
+
+  .identificacao-icone { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
+
+  .identificacao-texto { font-size: 13.5px; }
+
+  .identificacao-texto strong { color: var(--archive-green-dark); }
+
+  .ficha-bloqueado {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--paper-shadow);
+    border-left: 3px solid var(--navy);
+    padding: 12px 16px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  /* ===== Modal de compra (nome + e-mail) ===== */
+  .compra-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 61, 51, 0.55);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .compra-overlay.aberto { display: flex; }
+  .compra-modal {
+    background: var(--paper);
+    border: 1px solid var(--archive-green-dark);
+    box-shadow: 6px 6px 0 var(--kraft);
+    width: 100%;
+    max-width: 420px;
+    padding: 28px 24px;
+    position: relative;
+  }
+  .compra-modal h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 22px;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+  .compra-modal p.compra-aviso {
+    font-size: 14px;
+    margin-bottom: 18px;
+    opacity: 0.85;
+  }
+  .compra-fechar {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--archive-green-dark);
+  }
+  .compra-campo { margin-bottom: 14px; }
+  .compra-campo label {
+    display: block;
+    font-family: 'Special Elite', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .compra-campo input {
+    width: 100%;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 16px;
+    padding: 12px;
+    border: 1px solid var(--archive-green-dark);
+    background: #fff;
+    color: var(--archive-green-dark);
+    border-radius: 0;
+  }
+  .compra-campo input:focus { outline: 2px solid var(--stamp-red); outline-offset: 1px; }
+  .compra-erro {
+    color: #9b1c1c;
+    font-size: 13px;
+    min-height: 18px;
+    margin-bottom: 8px;
+  }
+  .compra-modal .hero-cta { width: 100%; text-align: center; }
+</style>
+</head>
+<body>
+
+  <div class="top-bar">CATÁLOGO DE FORMAÇÃO · EDUCAÇÃO E TECNOLOGIAS</div>
+
+  <div class="container">
+    <section class="hero">
+      <div class="hero-text">
+        <div class="hero-label">PROFESSORES &amp; PESQUISADORES — IA APLICADA</div>
+        <h1 class="hero-title">Um plano de estudo de 6 semanas para aplicar IA na sua prática pedagógica</h1>
+        <p class="hero-subtitle">Um guia progressivo, organizado por módulo, para levar ferramentas de inteligência artificial da teoria para a sala de aula.</p>
+        <div class="hero-citation">
+          SARA REINHARDT · <span class="credencial-confirmada">Doutora em Educação e Novas Tecnologias (2025)</span><br>
+          Área: Educação e Tecnologias · 6 módulos
+        </div>
+        <div class="hero-actions">
+          <a href="#" class="hero-cta" id="btn-comprar" onclick="abrirCompra(event)">Comprar agora</a>
+          <a href="#semana-1" class="hero-cta secondary">Ver módulos</a>
+        </div>
+
+        <div class="hero-drawer-mobile">
+          <a href="#semana-1" class="drawer-tab active">01</a>
+          <a href="#semana-2" class="drawer-tab">02</a>
+          <a href="#semana-3" class="drawer-tab">03</a>
+          <a href="#semana-4" class="drawer-tab">04</a>
+          <a href="#semana-5" class="drawer-tab">05</a>
+          <a href="#semana-6" class="drawer-tab">06</a>
+        </div>
+      </div>
+
+      <div class="hero-drawer">
+        <div class="drawer-tabs">
+          <a href="#semana-1" class="drawer-tab active">01</a>
+          <a href="#semana-2" class="drawer-tab">02</a>
+          <a href="#semana-3" class="drawer-tab">03</a>
+          <a href="#semana-4" class="drawer-tab">04</a>
+          <a href="#semana-5" class="drawer-tab">05</a>
+          <a href="#semana-6" class="drawer-tab">06</a>
+        </div>
+        <div class="drawer-box">
+          <div class="drawer-plate">CATÁLOGO<br>IA · EDUCAÇÃO</div>
+          <div class="drawer-handle"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="como-funciona">
+      <div class="section-intro">COMO FUNCIONA</div>
+      <p class="cf-intro">
+        Este plano foi organizado para que você não apenas conheça ferramentas de Inteligência
+        Artificial, mas compreenda <strong>como, quando e por que utilizá-las em sua prática
+        pedagógica</strong>. Em cada bloco, você seguirá cinco etapas:
+      </p>
+      <div class="cf-etapas">
+        <div class="cf-etapa"><div class="cf-numero">01</div><div class="cf-titulo">CONHECER</div></div>
+        <div class="cf-etapa"><div class="cf-numero">02</div><div class="cf-titulo">EXPLORAR</div></div>
+        <div class="cf-etapa"><div class="cf-numero">03</div><div class="cf-titulo">EXPERIMENTAR</div></div>
+        <div class="cf-etapa"><div class="cf-numero">04</div><div class="cf-titulo">REFLETIR</div></div>
+        <div class="cf-etapa"><div class="cf-numero">05</div><div class="cf-titulo">PRATICAR</div></div>
+      </div>
+      <p class="cf-frase">A tecnologia pode apoiar o processo. A intencionalidade pedagógica continua sendo do professor.</p>
+      <p class="cf-frase" style="margin-bottom:0;">A IA não substitui o professor. Ela amplia possibilidades.</p>
+
+      <div class="teaser-compra">
+        <strong>Na compra, você terá acesso a:</strong> 6 blocos de estudo e prática, com
+        <strong>18 ferramentas de IA</strong> que apoiam diferentes momentos da prática pedagógica —
+        planejar, avaliar, criar, interagir, pesquisar e ampliar sua formação. Cada bloco chega com
+        o nome da ferramenta, o link direto pra usar e o passo a passo de como aplicar.
+      </div>
+    </section>
+
+    <section class="fichas-section">
+      <div class="section-intro">CATÁLOGO — MÓDULOS 01 A 06</div>
+
+      <div class="ficha" id="semana-1">
+        <div class="ficha-top">
+          <span class="ficha-numero">Nº 01</span>
+          <span class="ficha-selo">ATIVO</span>
+        </div>
+        <hr class="ficha-divider">
+        <h2 class="ficha-title">Planejar aula com IA</h2>
+        <div class="ficha-body" style="margin-bottom:16px;">
+          Utilizar a Inteligência Artificial como apoio ao planejamento de aulas, atividades e
+          estratégias pedagógicas.
+        </div>
+        <div class="identificacoes">
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🧠</span>
+            <span class="identificacao-texto"><strong>Planejamento de aulas com IA</strong> — cria planos de aula, atividades, objetivos e recursos pedagógicos.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🧠</span>
+            <span class="identificacao-texto"><strong>Assistente pedagógico com IA</strong> — auxilia no planejamento, criação de atividades, avaliações e adaptação de conteúdos.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🧠</span>
+            <span class="identificacao-texto"><strong>Criação de atividades e planejamento</strong> — gera planos de aula, exercícios, avaliações e outros materiais pedagógicos.</span>
+          </div>
+        </div>
+        <div class="ficha-bloqueado">🔒 Nome da ferramenta, link direto e passo a passo liberados após a compra.</div>
+      </div>
+
+      <div class="ficha" id="semana-2">
+        <div class="ficha-top">
+          <span class="ficha-numero">Nº 02</span>
+          <span class="ficha-selo">ATIVO</span>
+        </div>
+        <hr class="ficha-divider">
+        <h2 class="ficha-title">Criar avaliações e questões</h2>
+        <div class="ficha-body" style="margin-bottom:16px;">
+          Utilizar a Inteligência Artificial como apoio à elaboração de questões e instrumentos
+          avaliativos.
+        </div>
+        <div class="identificacoes">
+          <div class="identificacao-item">
+            <span class="identificacao-icone">📝</span>
+            <span class="identificacao-texto"><strong>Criação de questões com IA</strong> — transforma textos e conteúdos em questões, quizzes e avaliações.</span>
+          </div>
+        </div>
+        <div class="ficha-bloqueado">🔒 Nome da ferramenta, link direto e passo a passo liberados após a compra.</div>
+      </div>
+
+      <div class="ficha" id="semana-3">
+        <div class="ficha-top">
+          <span class="ficha-numero">Nº 03</span>
+          <span class="ficha-selo">ATIVO</span>
+        </div>
+        <hr class="ficha-divider">
+        <h2 class="ficha-title">Criar conteúdo visual e interativo</h2>
+        <div class="ficha-body" style="margin-bottom:16px;">
+          Transformar conteúdos pedagógicos em materiais visuais, apresentações e experiências de
+          aprendizagem.
+        </div>
+        <div class="identificacoes">
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🎨</span>
+            <span class="identificacao-texto"><strong>Criação de materiais visuais</strong> — produz apresentações, infográficos, atividades e outros recursos educacionais com apoio de IA.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">📊</span>
+            <span class="identificacao-texto"><strong>Criação de apresentações com IA</strong> — transforma ideias e textos em apresentações estruturadas e visuais.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🖥️</span>
+            <span class="identificacao-texto"><strong>Criação de aulas interativas</strong> — combina apresentações, perguntas, atividades e participação dos alunos.</span>
+          </div>
+        </div>
+        <div class="ficha-bloqueado">🔒 Nome da ferramenta, link direto e passo a passo liberados após a compra.</div>
+      </div>
+
+      <div class="ficha" id="semana-4">
+        <div class="ficha-top">
+          <span class="ficha-numero">Nº 04</span>
+          <span class="ficha-selo">ATIVO</span>
+        </div>
+        <hr class="ficha-divider">
+        <h2 class="ficha-title">Tornar a aula interativa</h2>
+        <div class="ficha-body" style="margin-bottom:16px;">
+          Ampliar a participação dos estudantes por meio de atividades e recursos interativos.
+        </div>
+        <div class="identificacoes">
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🎯</span>
+            <span class="identificacao-texto"><strong>Aulas e apresentações interativas</strong> — permite inserir perguntas, enquetes, atividades e vídeos interativos.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🧩</span>
+            <span class="identificacao-texto"><strong>Criação e organização de atividades pedagógicas</strong> — auxilia o professor na elaboração de experiências e recursos para a aprendizagem.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🎮</span>
+            <span class="identificacao-texto"><strong>Jogos educativos e atividades interativas</strong> — cria quizzes, roletas, caça-palavras, associações e outros jogos para revisão.</span>
+          </div>
+        </div>
+        <div class="ficha-bloqueado">🔒 Nome da ferramenta, link direto e passo a passo liberados após a compra.</div>
+      </div>
+
+      <div class="ficha" id="semana-5">
+        <div class="ficha-top">
+          <span class="ficha-numero">Nº 05</span>
+          <span class="ficha-selo">ATIVO</span>
+        </div>
+        <hr class="ficha-divider">
+        <h2 class="ficha-title">Pesquisar, Criar e Apoiar</h2>
+        <div class="ficha-body" style="margin-bottom:16px;">
+          Conhecer diferentes assistentes de Inteligência Artificial e compreender que cada
+          ferramenta pode atender a necessidades diferentes.
+        </div>
+        <div class="identificacoes">
+          <div class="identificacao-item">
+            <span class="identificacao-icone">🔎</span>
+            <span class="identificacao-texto"><strong>Pesquisa com IA e fontes</strong> — auxilia na pesquisa de informações e apresenta referências para consulta.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">💬</span>
+            <span class="identificacao-texto"><strong>Assistente pedagógico com IA</strong> — apoia planejamento, criação de atividades, explicações, ideias, textos e tutoria.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">✨</span>
+            <span class="identificacao-texto"><strong>Assistente de IA do Google</strong> — auxilia na criação de conteúdos, pesquisa, organização de ideias e atividades pedagógicas.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">💻</span>
+            <span class="identificacao-texto"><strong>Assistente de IA da Microsoft</strong> — apoia produção de textos, ideias, pesquisas e tarefas integradas ao ecossistema Microsoft.</span>
+          </div>
+          <div class="identificacao-item">
+            <span class="identificacao-icone">📚</span>
+            <span class="identificacao-texto"><strong>Estudo e pesquisa com fontes próprias</strong> — permite trabalhar com PDFs, artigos e documentos, fazendo perguntas e gerando sínteses a partir dos materiais fornecidos.</span>
+          </div>
+        </div>
+        <div class="ficha-bloqueado">🔒 Nome da ferramenta, link direto e passo a passo liberados após a compra.</div>
+      </div>
+
+      <div class="ficha" id="semana-6">
+        <div class="ficha-top">
+          <span class="ficha-numero">Nº 06</span>
+          <span class="ficha-selo">BÔNUS</span>
+        </div>
+        <hr class="ficha-divider">
+        <h2 class="ficha-title">Inteligência Artificial na Educação</h2>
+        <div style="font-size:13px; color:var(--navy); font-weight:500; margin-bottom:14px;">Formação oficial do MEC — Bloco Temático 3</div>
+        <div class="ficha-body" style="margin-bottom:16px;">
+          Nesta etapa, o professor amplia sua compreensão sobre Inteligência Artificial na
+          Educação, com uma referência institucional do Ministério da Educação — dentro do
+          programa Escolas Conectadas.
+        </div>
+        <a href="https://www.gov.br/mec/pt-br/escolas-conectadas/bloco-tematico-3-inteligencia-artificial-na-educacao" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; background:var(--archive-green-dark); color:var(--paper); padding:10px 18px; border-radius:4px; text-decoration:none; font-size:13.5px; font-weight:500; margin-top:12px;">👉 Clique para acessar (conteúdo gratuito do Governo)</a>
+      </div>
+    </section>
+
+
+    <section class="autora-section">
+      <div class="section-intro">FICHA DE REGISTRO — AUTORIA</div>
+
+      <div class="autora-card">
+        <div class="autora-foto-wrap">
+          <div class="autora-clipe"></div>
+          <div class="autora-foto">
+            <img src="https://res.cloudinary.com/deyg6jktu/image/upload/e_sharpen:60,q_auto:best,f_auto/v1789657393/WhatsApp_Image_2026-09-15_at_16.59.23_axr5i8.jpg" alt="Sara Reinhardt">
+          </div>
+        </div>
+        <div class="autora-info">
+          <div class="autora-label">Sobre a autora</div>
+          <div class="autora-nome">Sara Reinhardt</div>
+          <div class="autora-credencial">Doutora em Educação e Novas Tecnologias — UNINTER (2025)</div>
+          <p class="autora-bio">
+            Supervisora Escolar e pesquisadora, com mestrado e especializações em
+            Pedagogia Gestora e Neuropsicopedagogia. Dedica-se à investigação da
+            Inteligência Artificial aplicada à educação, aproximando a inovação
+            tecnológica da prática pedagógica de forma crítica, ética e humanizada.
+          </p>
+
+          <div class="autora-bio-full" id="autora-bio-full">
+            <p class="autora-bio">
+              Sara Reinhardt é Doutora em Educação e Novas Tecnologias pela UNINTER
+              (2025), Mestra em Educação e Novas Tecnologias pela mesma instituição
+              e especialista em Pedagogia Gestora, com ênfase em Administração,
+              Supervisão e Orientação Escolar pela ACE (2007). É também especialista
+              em Neuropsicopedagogia pela UNIASSELVI (2014) e graduada em Pedagogia
+              pela UDESC (2006).
+            </p>
+            <p class="autora-bio">
+              Com uma trajetória construída em diferentes áreas da educação, atuou
+              como professora da Educação Infantil, professora da Educação de Jovens
+              e Adultos, coordenadora pedagógica e, atualmente, exerce a função de
+              Supervisora Escolar nos Anos Finais do Ensino Fundamental.
+            </p>
+            <p class="autora-bio">
+              Sua experiência profissional e acadêmica concentra-se na área da
+              Educação, com ênfase em métodos e técnicas de ensino, Inteligência
+              Artificial, Educação e Novas Tecnologias e formação continuada de
+              docentes.
+            </p>
+            <p class="autora-bio">
+              Em sua trajetória acadêmica, dedica-se especialmente à investigação
+              das possibilidades e dos desafios da Inteligência Artificial no
+              processo de ensino e aprendizagem, buscando aproximar a inovação
+              tecnológica da prática pedagógica de forma crítica, ética,
+              humanizada e significativa.
+            </p>
+            <p class="autora-bio">
+              Como pesquisadora e formadora de professores, acredita que a
+              tecnologia não substitui o professor: potencializa sua prática
+              quando utilizada com intencionalidade pedagógica.
+            </p>
+          </div>
+
+          <button class="autora-toggle" id="autora-toggle" onclick="
+            var f = document.getElementById('autora-bio-full');
+            var btn = document.getElementById('autora-toggle');
+            var aberto = f.style.display === 'block';
+            f.style.display = aberto ? 'none' : 'block';
+            btn.textContent = aberto ? 'Ler biografia completa →' : '← Recolher biografia';
+          ">Ler biografia completa →</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <button class="chat-bubble" onclick="document.getElementById('chat-panel').classList.toggle('open')" aria-label="Tirar dúvidas">
+    <img src="https://res.cloudinary.com/deyg6jktu/image/upload/e_sharpen:60,q_auto:best,f_auto,w_120,h_120,c_fill,g_face/v1789657393/WhatsApp_Image_2026-09-15_at_16.59.23_axr5i8.jpg" alt="Sara">
+  </button>
+
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-panel-header">DÚVIDAS FREQUENTES</div>
+    <div class="chat-panel-body">
+
+      <button class="chat-question-btn" onclick="
+        var a = document.getElementById('resp-1');
+        a.classList.toggle('open');
+      ">Como recebo o material depois de comprar?</button>
+      <div class="chat-answer" id="resp-1">
+        O material é enviado automaticamente para o seu e-mail assim que o pagamento é confirmado — não precisa esperar ninguém te mandar manualmente. Se não aparecer na caixa de entrada, olhe o Spam e a aba Promoções. Se ainda assim não encontrar, fale com a Sara pelo WhatsApp.
+      </div>
+
+      <button class="chat-question-btn" onclick="
+        var a = document.getElementById('resp-2');
+        a.classList.toggle('open');
+      ">Funciona no celular?</button>
+      <div class="chat-answer" id="resp-2">
+        Sim! O material é um guia digital, que abre em qualquer celular, tablet ou computador, sem precisar instalar nada.
+      </div>
+
+      <button class="chat-question-btn" onclick="
+        var a = document.getElementById('resp-3');
+        a.classList.toggle('open');
+      ">Preciso pagar as ferramentas de IA mencionadas?</button>
+      <div class="chat-answer" id="resp-3">
+        A maioria das ferramentas indicadas tem versão gratuita suficiente para começar. Algumas têm planos pagos opcionais, mas você não precisa deles para aproveitar o material.
+      </div>
+
+      <button class="chat-question-btn" onclick="
+        var a = document.getElementById('resp-4');
+        a.classList.toggle('open');
+      ">Preciso entender de tecnologia pra usar?</button>
+      <div class="chat-answer" id="resp-4">
+        Não! O material foi feito justamente para quem está começando — cada ferramenta vem com passo a passo simples, direto ao ponto.
+      </div>
+
+      <button class="chat-question-btn" onclick="
+        var a = document.getElementById('resp-5');
+        a.classList.toggle('open');
+      ">Por quanto tempo tenho acesso?</button>
+      <div class="chat-answer" id="resp-5">
+        O acesso ao guia digital é definitivo — depois que ele chega no seu e-mail, é seu para sempre, sem prazo de expiração.
+      </div>
+
+      <a href="https://wa.me/5547999193829?text=Oi%20Sara!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Plano%20de%20Estudo%20de%20IAs" target="_blank" class="chat-whatsapp">📱 Falar direto com a Sara no WhatsApp</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    Desenvolvido por <a href="https://instagram.com/nancysantana.dev" target="_blank" rel="noopener">@nancysantana.dev</a>
+  </footer>
+
+  <div class="compra-overlay" id="compra-overlay" aria-hidden="true">
+    <div class="compra-modal" role="dialog" aria-modal="true" aria-labelledby="compra-titulo">
+      <button type="button" class="compra-fechar" onclick="fecharCompra()" aria-label="Fechar">&times;</button>
+      <h2 id="compra-titulo">Para onde enviamos o material?</h2>
+      <p class="compra-aviso">Depois que o pagamento for confirmado, o guia digital chega automaticamente no e-mail que você informar aqui. Confira com atenção.<br><strong>Não chegou? Olhe também o Spam e a aba Promoções.</strong></p>
+      <div class="compra-campo">
+        <label for="compra-nome">Seu nome</label>
+        <input type="text" id="compra-nome" autocomplete="name" placeholder="Nome completo">
+      </div>
+      <div class="compra-campo">
+        <label for="compra-email">Seu e-mail</label>
+        <input type="email" id="compra-email" autocomplete="email" inputmode="email" placeholder="voce@email.com">
+      </div>
+      <div class="compra-campo">
+        <label for="compra-email2">Confirme o e-mail</label>
+        <input type="email" id="compra-email2" autocomplete="off" inputmode="email" placeholder="Digite o e-mail novamente">
+      </div>
+      <div class="compra-erro" id="compra-erro"></div>
+      <button type="button" class="hero-cta" id="compra-enviar" onclick="iniciarCompra()">Ir para o pagamento</button>
+    </div>
+  </div>
+
+  <script>
+    function abrirCompra(event) {
+      event.preventDefault();
+      var ov = document.getElementById('compra-overlay');
+      ov.classList.add('aberto');
+      ov.setAttribute('aria-hidden', 'false');
+      document.getElementById('compra-erro').textContent = '';
+      setTimeout(function () { document.getElementById('compra-nome').focus(); }, 50);
+    }
+
+    function fecharCompra() {
+      var ov = document.getElementById('compra-overlay');
+      ov.classList.remove('aberto');
+      ov.setAttribute('aria-hidden', 'true');
+    }
+
+    document.getElementById('compra-overlay').addEventListener('click', function (e) {
+      if (e.target === this) fecharCompra();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') fecharCompra();
+    });
+
+    async function iniciarCompra() {
+      var nome = document.getElementById('compra-nome').value.trim();
+      var email = document.getElementById('compra-email').value.trim().toLowerCase();
+      var email2 = document.getElementById('compra-email2').value.trim().toLowerCase();
+      var erro = document.getElementById('compra-erro');
+      var btn = document.getElementById('compra-enviar');
+      var textoOriginal = btn.textContent;
+
+      var emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+      if (nome.length < 2) { erro.textContent = 'Informe seu nome.'; return; }
+      if (!emailValido) { erro.textContent = 'Informe um e-mail válido.'; return; }
+      if (email !== email2) { erro.textContent = 'Os e-mails não são iguais. Confira e tente de novo.'; return; }
+
+      erro.textContent = '';
+      btn.textContent = 'Aguarde...';
+      btn.style.pointerEvents = 'none';
+
+      try {
+        var resposta = await fetch('/.netlify/functions/create-preference', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome: nome, email: email })
+        });
+        var dados = await resposta.json();
+
+        if (dados.init_point) {
+          window.location.href = dados.init_point;
+        } else {
+          erro.textContent = 'Não foi possível iniciar o pagamento. Tente novamente em instantes.';
+          btn.textContent = textoOriginal;
+          btn.style.pointerEvents = 'auto';
+        }
+      } catch (e) {
+        console.error(e);
+        erro.textContent = 'Não foi possível iniciar o pagamento. Tente novamente em instantes.';
+        btn.textContent = textoOriginal;
+        btn.style.pointerEvents = 'auto';
+      }
+    }
+  </script>
+
+</body>
+</html>
