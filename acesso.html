@@ -41,18 +41,6 @@
       return;
     }
 
-    // MODO DEMONSTRAÇÃO — apenas para você (Nancy) conferir visualmente o
-    // conteúdo liberado antes de configurar Firebase/Mercado Pago de verdade.
-    // Acesse: acesso.html?token=demo
-    // IMPORTANTE: remover este bloco (ou trocar "demo" por algo secreto)
-    // antes de publicar o site pra Sara de vez, senão qualquer pessoa
-    // consegue ver o conteúdo completo sem pagar, só usando ?token=demo.
-    if (token === 'demo') {
-      telaCarregando.style.display = 'none';
-      telaConteudo.style.display = 'block';
-      return;
-    }
-
     try {
       const ref = doc(db, 'acessos', token);
       const snap = await getDoc(ref);
