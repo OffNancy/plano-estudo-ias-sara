@@ -89,7 +89,7 @@ exports.handler = async (event) => {
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const assunto = 'Seu Plano de Estudo de IAs chegou! 🎉';
+    const assunto = 'Seu Plano de Estudo de IAs chegou';
 
     // ---- Caminho principal: link de acesso (sem anexo) ----
     let db = null;
