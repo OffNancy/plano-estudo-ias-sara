@@ -315,8 +315,96 @@
 
   .site-footer a { color: var(--paper); text-decoration: underline; font-weight: 500; }
 
+  /* ===== ÍNDICE DE BLOCOS (navegação em destaque) ===== */
+  .indice-blocos {
+    background: var(--paper-shadow);
+    border: 2px solid var(--archive-green-dark);
+    padding: 24px;
+    margin-bottom: 36px;
+    text-align: center;
+  }
+
+  .indice-titulo {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--archive-green-dark);
+    margin-bottom: 6px;
+  }
+
+  .indice-sub {
+    font-size: 15px;
+    color: var(--navy);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+
+  .indice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .indice-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: var(--archive-green-dark);
+    color: var(--paper);
+    text-decoration: none;
+    padding: 16px 10px;
+    border-radius: 6px;
+    min-height: 92px;
+    animation: pulso-acessar 2.2s ease-in-out infinite;
+    transition: transform 0.15s ease;
+  }
+
+  .indice-btn:hover { transform: translateY(-2px); animation: none; }
+
+  .indice-btn .ib-icone { font-size: 24px; line-height: 1; }
+  .indice-btn .ib-num { font-weight: 700; font-size: 17px; letter-spacing: 0.02em; }
+  .indice-btn .ib-nome { font-size: 12.5px; opacity: 0.92; line-height: 1.25; }
+
+  /* número do bloco maior, em etiqueta dourada */
+  .bloco-numero {
+    font-size: 16px !important;
+    font-weight: 700;
+    background: var(--stamp-red);
+    color: var(--archive-green-dark) !important;
+    padding: 4px 12px;
+    border-radius: 3px;
+  }
+
+  .bloco-icone { font-size: 26px !important; }
+  .bloco { scroll-margin-top: 16px; }
+
+  /* botão flutuante para voltar ao índice */
+  .voltar-blocos {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 900;
+    background: var(--navy);
+    color: var(--paper);
+    border: 2px solid var(--stamp-red);
+    border-radius: 999px;
+    padding: 12px 18px;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(13, 43, 74, 0.35);
+    display: none;
+  }
+
+  .voltar-blocos.visivel { display: inline-block; }
+
   @media (max-width: 600px) {
     .bloco { padding: 22px; }
+    .indice-grid { grid-template-columns: repeat(2, 1fr); }
+    .indice-titulo { font-size: 21px; }
     .recapitulacao { grid-template-columns: 1fr; }
   }
 </style>
@@ -350,6 +438,20 @@
 
       <div class="aviso-professor">
         <strong>Lembre-se:</strong> a tecnologia pode apoiar o processo, mas a intencionalidade pedagógica continua sendo sua. Use cada ferramenta como uma aliada — questione, experimente, adapte e revise antes de levar pra sala de aula.
+      </div>
+
+      <!-- ===== ÍNDICE DE BLOCOS ===== -->
+      <div class="indice-blocos" id="indice-blocos">
+        <div class="indice-titulo">👇 Escolha um bloco</div>
+        <div class="indice-sub">Clique em um bloco para ir direto até ele</div>
+        <div class="indice-grid">
+          <a class="indice-btn" href="#bloco-01"><span class="ib-icone">🧠</span><span class="ib-num">Bloco 1</span><span class="ib-nome">Planejar com IA</span></a>
+          <a class="indice-btn" href="#bloco-02"><span class="ib-icone">📝</span><span class="ib-num">Bloco 2</span><span class="ib-nome">Avaliar com IA</span></a>
+          <a class="indice-btn" href="#bloco-03"><span class="ib-icone">🎨</span><span class="ib-num">Bloco 3</span><span class="ib-nome">Criar com IA</span></a>
+          <a class="indice-btn" href="#bloco-04"><span class="ib-icone">🎯</span><span class="ib-num">Bloco 4</span><span class="ib-nome">Interagir com IA</span></a>
+          <a class="indice-btn" href="#bloco-05"><span class="ib-icone">🔎</span><span class="ib-num">Bloco 5</span><span class="ib-nome">Pesquisar, criar e apoiar</span></a>
+          <a class="indice-btn" href="#bloco-06"><span class="ib-icone">🏛️</span><span class="ib-num">Bloco 6</span><span class="ib-nome">IA na Educação (bônus)</span></a>
+        </div>
       </div>
 
       <!-- ===== BLOCO 01 ===== -->
@@ -559,6 +661,21 @@
           <div class="aplicando">🎯 <strong>Aplicando na prática:</strong> escolha uma ideia ou estratégia aprendida ao longo deste percurso e registre como ela poderá ser incorporada à sua prática pedagógica.</div>
         </div>
       </div>
+
+      <a href="#indice-blocos" class="voltar-blocos" id="voltar-blocos">↑ Voltar aos blocos</a>
+      <script>
+        (function () {
+          var btn = document.getElementById('voltar-blocos');
+          var indice = document.getElementById('indice-blocos');
+          function atualizar() {
+            if (!btn || !indice) return;
+            var passou = indice.getBoundingClientRect().bottom < 0;
+            btn.classList.toggle('visivel', passou);
+          }
+          window.addEventListener('scroll', atualizar, { passive: true });
+          atualizar();
+        })();
+      </script>
 
       <!-- ===== FECHAMENTO ===== -->
       <div class="fechamento">
